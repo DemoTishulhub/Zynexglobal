@@ -24,7 +24,7 @@ export default function SectionTitle({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-sm leading-relaxed sm:text-base ${light ? "text-white/60" : "text-textLight"}`}>
+        <p className={`mt-4 text-base leading-relaxed ${light ? "text-white/80" : "text-textMuted"}`}>
           {description}
         </p>
       )}

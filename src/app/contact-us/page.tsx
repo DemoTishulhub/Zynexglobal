@@ -41,7 +41,7 @@ export default function ContactPage() {
           <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Contact Us
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
             Have a question about our products or want to place an order? Reach
             out to our team and we&apos;ll get back to you within 24 hours.
           </p>

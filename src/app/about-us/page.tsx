@@ -74,7 +74,7 @@ export default function AboutPage() {
           <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Who We Are
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
             Zynex Global is a leading B2B exporter of premium dehydrated fruits,
             vegetables, and food ingredients, bridging India&apos;s finest
             agricultural produce with international buyers who demand
@@ -97,7 +97,7 @@ export default function AboutPage() {
               <Globe size={32} className="text-white" />
               <div>
                 <div className="text-2xl font-bold text-white">30+</div>
-                <div className="text-xs text-white/70">Countries Served</div>
+                <div className="text-sm text-white/90">Countries Served</div>
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
               title="Modern And Trusted Food Export Company"
               center={false}
             />
-            <div className="mt-4 space-y-4 text-sm leading-relaxed text-textMuted sm:text-base">
+            <div className="mt-4 space-y-4 text-base leading-relaxed text-textMuted">
               <p>
                 Zynex Global is a leading B2B exporter of premium dehydrated
                 fruits, vegetables, and food ingredients, headquartered in
@@ -132,7 +132,7 @@ export default function AboutPage() {
             </div>
             <ul className="mt-6 space-y-3">
               {checklist.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm text-text">
+                <li key={item} className="flex items-center gap-3 text-base text-text">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10">
                     <Check size={13} className="text-accent" />
                   </span>
@@ -201,7 +201,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Ready to Partner With Us?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60 sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-base text-white/80">
             Let&apos;s discuss how Zynex Global can be your trusted supply
             partner for premium dehydrated food products.
           </p>

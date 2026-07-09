@@ -52,7 +52,7 @@ export default function Counter({ end, suffix = "", label, icon }: CounterProps)
         {count}
         <span className="text-accent">{suffix}</span>
       </div>
-      <p className="mt-1 text-sm text-white/60">{label}</p>
+      <p className="mt-2 text-sm text-white/80">{label}</p>
     </div>
   );
 }

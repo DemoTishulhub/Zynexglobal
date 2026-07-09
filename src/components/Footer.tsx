@@ -44,7 +44,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-block text-sm text-white/60 transition-all hover:text-accent hover:pl-2"
+                      className="inline-block text-sm text-white/80 transition-all hover:text-accent hover:pl-2"
                     >
                       {link.label}
                     </Link>
@@ -56,18 +56,18 @@ export default function Footer() {
             <div>
               <h3 className="mb-5 text-base font-semibold text-white">Contact</h3>
               <ul className="space-y-4 text-sm">
-                <li className="flex items-start gap-3 text-white/60">
+                <li className="flex items-start gap-3 text-white/80">
                   <MapPin size={18} className="mt-0.5 shrink-0 text-accent" />
                   <span>G-08 Govindpuram, Ghaziabad, UP 201013, India</span>
                 </li>
-                <li className="flex items-start gap-3 text-white/60">
+                <li className="flex items-start gap-3 text-white/80">
                   <Phone size={18} className="mt-0.5 shrink-0 text-accent" />
                   <div className="flex flex-col">
                     <a href="tel:+917983006995" className="transition-colors hover:text-accent">+91 7983006995</a>
                     <a href="tel:+919625289043" className="transition-colors hover:text-accent">+91 9625289043</a>
                   </div>
                 </li>
-                <li className="flex items-start gap-3 text-white/60">
+                <li className="flex items-start gap-3 text-white/80">
                   <Mail size={18} className="mt-0.5 shrink-0 text-accent" />
                   <a href="mailto:admin@zynexglobal.in" className="transition-colors hover:text-accent">
                     admin@zynexglobal.in

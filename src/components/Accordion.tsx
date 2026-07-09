@@ -23,7 +23,7 @@ export default function Accordion({ items }: AccordionProps) {
           <div key={index}>
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold transition-colors hover:bg-surface/50"
+              className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold transition-colors hover:bg-surface/50"
               style={{ color: isOpen ? 'var(--color-accent2)' : undefined }}
             >
               <span>{item.question}</span>
@@ -42,7 +42,7 @@ export default function Accordion({ items }: AccordionProps) {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="px-6 pb-4 text-sm leading-relaxed text-textMuted">
+                <div className="px-6 pb-4 text-base leading-relaxed text-textMuted">
                   {item.answer}
                 </div>
               </div>

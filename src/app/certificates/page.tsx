@@ -41,7 +41,7 @@ export default function CertificatesPage() {
           <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Our Certificates
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
             Zynex Global operates under strict quality and safety standards.
             Our certifications demonstrate an unwavering commitment to food
             safety, export compliance, and quality excellence.
@@ -58,7 +58,7 @@ export default function CertificatesPage() {
         <div className="mt-12">
           <Lightbox images={certificates} />
         </div>
-        <p className="mt-6 text-center text-xs text-textMuted">
+        <p className="mt-6 text-center text-sm text-textMuted">
           Click any certificate to view it in full size.
         </p>
       </Section>
@@ -68,7 +68,7 @@ export default function CertificatesPage() {
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Need Documentation or Samples?
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-white/60 sm:text-base">
+          <p className="mx-auto mt-3 max-w-xl text-base text-white/80">
             Request full certificate copies, product specifications, or samples —
             our team is ready to assist with your compliance requirements.
           </p>

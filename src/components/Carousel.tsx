@@ -53,7 +53,7 @@ export default function Carousel({ items }: CarouselProps) {
                 </p>
                 <div className="mt-4">
                   <p className="font-semibold text-brand">{item.name}</p>
-                  <p className="text-sm text-textLight">{item.location}</p>
+                  <p className="text-sm text-textMuted">{item.location}</p>
                 </div>
               </div>
             </div>
