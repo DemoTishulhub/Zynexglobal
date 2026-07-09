@@ -1,28 +1,47 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-body-font",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Zynex Global — Next-Gen Digital Solutions",
+  metadataBase: new URL("https://zynexglobal.vercel.app"),
+  title: {
+    default: "Zynex Global — Premium Dehydrated Fruits, Vegetables & Food Ingredients",
+    template: "%s | Zynex Global",
+  },
   description:
-    "Zynex Global delivers world-class digital products, from web and mobile apps to AI-driven platforms. We build for scale, performance, and impact.",
+    "Zynex Global is a leading B2B exporter of premium dehydrated fruits, vegetables, and food ingredients from India. Trusted by buyers in UAE, UK, Germany, Netherlands, and Saudi Arabia.",
   openGraph: {
-    title: "Zynex Global",
+    title: "Zynex Global — Premium Dehydrated Food Exporter from India",
     description:
-      "Next-gen digital solutions — web, mobile, AI, and cloud.",
+      "Sourcing the world's finest dehydrated fruits, vegetables, and food ingredients. Delivering excellence worldwide.",
     url: "https://zynexglobal.vercel.app",
     siteName: "Zynex Global",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zynex Global — Premium Dehydrated Food Exporter",
+    description:
+      "Sourcing the world's finest dehydrated fruits, vegetables, and food ingredients.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -32,12 +51,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
-    >
-      <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 antialiased">
-        {children}
+    <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
+      <body className="flex min-h-screen flex-col bg-background text-text antialiased">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
