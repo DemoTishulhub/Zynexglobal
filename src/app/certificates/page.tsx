@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import Lightbox from "@/components/Lightbox";
 import Button from "@/components/Button";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Certificates",
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "View Zynex Global's certifications including FSSAI, APEDA, ISO 9001:2015, and other food safety and export quality certificates.",
 };
 
+// TODO: replace with real scanned certificate images from client
 const certificates = [
   {
     src: "/images/certificates/cert-1.svg",
@@ -33,15 +34,15 @@ const certificates = [
 export default function CertificatesPage() {
   return (
     <>
-      <section className="bg-brand-dark py-16 text-center">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
+      <section className="border-b border-border bg-surface py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-sm font-medium uppercase tracking-widest text-accent">
             Quality Assurance
-          </span>
-          <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          </p>
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand sm:text-4xl">
             Our Certificates
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-textMuted">
             Zynex Global operates under strict quality and safety standards.
             Our certifications demonstrate an unwavering commitment to food
             safety, export compliance, and quality excellence.
@@ -63,9 +64,9 @@ export default function CertificatesPage() {
         </p>
       </Section>
 
-      <section className="bg-brand-dark py-16 text-center">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
+      <section className="bg-brand py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             Need Documentation or Samples?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/80">
@@ -73,9 +74,9 @@ export default function CertificatesPage() {
             our team is ready to assist with your compliance requirements.
           </p>
           <div className="mt-8">
-            <Button href="/contact-us">
+            <Button href="/contact-us" className="bg-accent text-white hover:bg-accent-dark">
               Contact Us
-              <ChevronRight size={15} />
+              <ArrowRight size={16} />
             </Button>
           </div>
         </div>

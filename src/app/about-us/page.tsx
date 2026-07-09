@@ -8,8 +8,7 @@ import {
   CheckCircle2,
   Truck,
   Check,
-  Globe,
-  ChevronRight,
+  ArrowRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -66,15 +65,15 @@ const checklist = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-brand-dark py-16 text-center">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
+      <section className="border-b border-border bg-surface py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-sm font-medium uppercase tracking-widest text-accent">
             About Zynex Global
-          </span>
-          <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          </p>
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand sm:text-4xl">
             Who We Are
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-textMuted">
             Zynex Global is a leading B2B exporter of premium dehydrated fruits,
             vegetables, and food ingredients, bridging India&apos;s finest
             agricultural produce with international buyers who demand
@@ -84,22 +83,13 @@ export default function AboutPage() {
       </section>
 
       <Section>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl border border-border">
-              <img
-                src="/images/operations/facility-2.svg"
-                alt="Zynex Global Operations"
-                className="w-full"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-2 flex items-center gap-3 rounded-xl bg-accent px-6 py-4 shadow-xl sm:right-8">
-              <Globe size={32} className="text-white" />
-              <div>
-                <div className="text-2xl font-bold text-white">30+</div>
-                <div className="text-sm text-white/90">Countries Served</div>
-              </div>
-            </div>
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="overflow-hidden rounded-lg border border-border">
+            <img
+              src="/images/operations/facility-2.jpg"
+              alt="Zynex Global food processing facility"
+              className="w-full object-cover"
+            />
           </div>
 
           <div>
@@ -133,9 +123,7 @@ export default function AboutPage() {
             <ul className="mt-6 space-y-3">
               {checklist.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-base text-text">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <Check size={13} className="text-accent" />
-                  </span>
+                  <Check size={16} className="shrink-0 text-accent" />
                   {item}
                 </li>
               ))}
@@ -150,20 +138,18 @@ export default function AboutPage() {
           title="Our Process"
           description="From sourcing to shipment, every step of our process is designed to deliver the finest quality to your doorstep."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step, index) => (
             <div
               key={step.title}
-              className="group rounded-xl border border-border bg-white p-7 transition-all hover:shadow-lg"
+              className="border border-border bg-white p-6 transition-shadow hover:shadow-sm"
             >
-              <div className="mb-1 text-xs font-bold text-accent">
+              <p className="text-sm font-medium text-accent">
                 STEP {String(index + 1).padStart(2, "0")}
-              </div>
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand/5 transition-colors group-hover:bg-accent">
-                <step.icon size={26} className="text-brand transition-colors group-hover:text-white" />
-              </div>
-              <h3 className="mb-2 text-base font-bold text-brand">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-textMuted">{step.desc}</p>
+              </p>
+              <step.icon size={24} className="mt-3 text-brand" />
+              <h3 className="mt-3 text-sm font-semibold text-brand">{step.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-textMuted">{step.desc}</p>
             </div>
           ))}
         </div>
@@ -175,13 +161,13 @@ export default function AboutPage() {
           title="Certified & Trusted Worldwide"
           description="Our operations are backed by internationally recognized certifications, ensuring every shipment meets the strictest food safety and quality standards."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {certifications.map((cert) => (
             <div
               key={cert.name}
-              className="rounded-xl border border-border bg-white p-7"
+              className="border border-border bg-white p-6"
             >
-              <h3 className="text-xl font-bold text-brand">{cert.name}</h3>
+              <h3 className="text-base font-semibold text-brand">{cert.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-textMuted">
                 {cert.desc}
               </p>
@@ -191,14 +177,14 @@ export default function AboutPage() {
         <div className="mt-8 text-center">
           <Button href="/certificates">
             View All Certificates
-            <ChevronRight size={15} />
+            <ArrowRight size={16} />
           </Button>
         </div>
       </Section>
 
-      <section className="bg-brand-dark py-16 text-center">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl">
+      <section className="bg-brand py-16 sm:py-20">
+        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             Ready to Partner With Us?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/80">
@@ -206,9 +192,9 @@ export default function AboutPage() {
             partner for premium dehydrated food products.
           </p>
           <div className="mt-8">
-            <Button href="/contact-us">
+            <Button href="/contact-us" className="bg-accent text-white hover:bg-accent-dark">
               Get in Touch
-              <ChevronRight size={15} />
+              <ArrowRight size={16} />
             </Button>
           </div>
         </div>

@@ -33,35 +33,35 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-brand-dark py-16 text-center">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
+      <section className="border-b border-border bg-surface py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-sm font-medium uppercase tracking-widest text-accent">
             Get in Touch
-          </span>
-          <h1 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          </p>
+          <h1 className="mt-2 font-heading text-3xl font-bold text-brand sm:text-4xl">
             Contact Us
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/80">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-textMuted">
             Have a question about our products or want to place an order? Reach
             out to our team and we&apos;ll get back to you within 24 hours.
           </p>
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="space-y-6">
               {contactInfo.map((info) => (
                 <div
                   key={info.title}
-                  className="flex items-start gap-4 rounded-xl border border-border bg-white p-6 shadow-sm"
+                  className="flex items-start gap-4 border border-border bg-white p-5"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                    <info.icon size={22} className="text-accent" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-border">
+                    <info.icon size={18} className="text-brand" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-brand">{info.title}</h3>
+                    <h3 className="text-sm font-semibold text-brand">{info.title}</h3>
                     {info.lines && (
                       <div className="mt-1 space-y-0.5 text-sm leading-relaxed text-textMuted">
                         {info.lines.map((line) => (
@@ -75,7 +75,7 @@ export default function ContactPage() {
                           <a
                             key={link.href}
                             href={link.href}
-                            className="block text-textMuted transition-colors hover:text-accent"
+                            className="block text-textMuted transition-colors hover:text-brand"
                           >
                             {link.label}
                           </a>
@@ -86,10 +86,10 @@ export default function ContactPage() {
                 </div>
               ))}
 
-              <div className="overflow-hidden rounded-xl border border-border">
+              <div className="overflow-hidden rounded-lg border border-border">
                 <iframe
                   title="Zynex Global Location - Ghaziabad, India"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0!2d77.45!3d28.67!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQwJzEyLjAiTiA3N8KwMjcnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+                  src="https://maps.google.com/maps?q=G-08+Govindpuram,Ghaziabad,Uttar+Pradesh+201013,India&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   className="h-64 w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -97,8 +97,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-white p-8 shadow-sm">
-              <h2 className="mb-6 text-xl font-bold text-brand">
+            <div className="border border-border bg-white p-6">
+              <h2 className="mb-6 text-lg font-semibold text-brand">
                 Send Us a Message
               </h2>
               <ContactForm />

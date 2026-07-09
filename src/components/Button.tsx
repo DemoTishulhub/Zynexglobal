@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -12,12 +12,8 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "bg-accent text-white hover:bg-accent-dark shadow-sm hover:shadow-lg",
-  secondary:
-    "bg-accent2 text-white hover:bg-accent2-light shadow-sm hover:shadow-lg",
-  ghost:
-    "border border-border bg-white text-brand hover:bg-surface",
+  primary: "bg-brand text-white hover:bg-brand-light",
+  secondary: "border border-border bg-white text-brand hover:bg-surface",
 };
 
 export default function Button({
@@ -28,7 +24,7 @@ export default function Button({
   type = "button",
   onClick,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 ${variantClasses[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-colors ${variantClasses[variant]} ${className}`;
 
   if (href) {
     return (

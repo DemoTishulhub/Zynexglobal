@@ -14,7 +14,7 @@ export default function Section({
   return (
     <section
       id={id}
-      className={`py-16 sm:py-20 lg:py-24 ${
+      className={`py-20 sm:py-24 ${
         background === "surface" ? "bg-surface" : ""
       } ${className}`}
     >

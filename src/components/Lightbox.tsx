@@ -53,18 +53,18 @@ export default function Lightbox({ images }: LightboxProps) {
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
-            className="group overflow-hidden rounded-lg border border-border bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent/50"
+            className="group overflow-hidden rounded-lg border border-border bg-white transition-shadow hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-brand/20"
           >
             <div className="aspect-[4/3] bg-surface">
               <img
                 src={image.src}
                 alt={image.alt}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="lazy"
               />
             </div>
             <div className="p-3 text-center">
-              <p className="text-sm font-medium text-brand">{image.caption}</p>
+              <p className="text-sm text-textMuted">{image.caption}</p>
             </div>
           </button>
         ))}
@@ -76,31 +76,31 @@ export default function Lightbox({ images }: LightboxProps) {
           onClick={() => setActiveIndex(null)}
         >
           <button
-            className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+            className="absolute right-4 top-4 rounded-md bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
             onClick={() => setActiveIndex(null)}
             aria-label="Close lightbox"
           >
-            <X size={24} />
+            <X size={20} />
           </button>
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-md bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
             onClick={(e) => {
               e.stopPropagation();
               prev();
             }}
             aria-label="Previous"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} />
           </button>
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
             onClick={(e) => {
               e.stopPropagation();
               next();
             }}
             aria-label="Next"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} />
           </button>
           <div
             className="max-h-[80vh] max-w-[90vw]"

@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import ProductModal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
 import SectionTitle from "@/components/SectionTitle";
+import { Download } from "lucide-react";
 
 interface Product {
   name: string;
@@ -25,7 +26,7 @@ const products: Product[] = [
   {
     name: "Onion Flakes",
     slug: "onion-flakes",
-    image: "/images/products/onion-flakes.svg",
+    image: "/images/products/onion-flakes.jpg",
     shortDesc: "White, red & pink varieties with ≤6% moisture and 24-month shelf life.",
     varieties: "White, Red, Pink",
     dryingMethods: "Air Dried, Vacuum Dried, Freeze Dried",
@@ -39,7 +40,7 @@ const products: Product[] = [
   {
     name: "Dehydrated Mango",
     slug: "mango-slices",
-    image: "/images/products/mango-slices.svg",
+    image: "/images/products/mango-slices.jpg",
     shortDesc: "Slices, dices, chunks, strips & powder with natural yellow-golden color.",
     varieties: "Slices, Dices, Chunks, Strips, Powder",
     dryingMethods: "Air Dried, Vacuum Dried, Freeze Dried",
@@ -53,7 +54,7 @@ const products: Product[] = [
   {
     name: "Banana Chips",
     slug: "banana-chips",
-    image: "/images/products/banana-chips.svg",
+    image: "/images/products/banana-chips.jpg",
     shortDesc: "Dehydrated, freeze-dried, fried & vacuum-fried in custom packaging.",
     varieties: "Dehydrated Slices, Freeze Dried, Fried, Vacuum Fried",
     dryingMethods: "Dehydrated, Freeze Dried, Fried, Vacuum Fried",
@@ -67,7 +68,7 @@ const products: Product[] = [
   {
     name: "Green Chilly Flakes",
     slug: "chilli-flakes",
-    image: "/images/products/chilli-flakes.svg",
+    image: "/images/products/chilli-flakes.jpg",
     shortDesc: "Flakes & crushed varieties with ≥99% purity and ≤6% moisture.",
     varieties: "Flakes, Crushed",
     dryingMethods: "Air Dried, Freeze Dried",
@@ -81,7 +82,7 @@ const products: Product[] = [
   {
     name: "Coconut Chips",
     slug: "coconut-chips",
-    image: "/images/products/coconut-chips.svg",
+    image: "/images/products/coconut-chips.jpg",
     shortDesc: "Chips, shreds & flakes with ≤3% moisture and natural white color.",
     varieties: "Chips, Shreds, Flakes",
     dryingMethods: "Sun Dried, Air Dried, Toasted",
@@ -95,7 +96,7 @@ const products: Product[] = [
   {
     name: "Dehydrated Tomato",
     slug: "tomato-flakes",
-    image: "/images/products/tomato-flakes.svg",
+    image: "/images/products/tomato-flakes.jpg",
     shortDesc: "Flakes, granules & powder with ≤5% moisture and deep red color.",
     varieties: "Flakes, Granules, Powder",
     dryingMethods: "Air Dried, Freeze Dried",
@@ -123,45 +124,45 @@ export default function ProductsPage() {
       </Section>
 
       <Section background="surface">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <div
               key={product.slug}
               id={product.slug}
-              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="group flex flex-col overflow-hidden rounded-lg border border-border bg-white transition-shadow hover:shadow-sm"
             >
               <div className="aspect-[4/3] overflow-hidden bg-surface">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-bold text-brand transition-colors group-hover:text-accent2">
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-sm font-semibold text-brand">
                   {product.name}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-textMuted">
+                <p className="mt-1.5 text-sm leading-relaxed text-textMuted">
                   {product.shortDesc}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {product.uses.slice(0, 3).map((use) => (
                     <span
                       key={use}
-                      className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-textMuted"
+                      className="border border-border px-2 py-0.5 text-sm text-textMuted"
                     >
                       {use}
                     </span>
                   ))}
                   {product.uses.length > 3 && (
-                    <span className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-textMuted">
+                    <span className="border border-border px-2 py-0.5 text-sm text-textMuted">
                       +{product.uses.length - 3} more
                     </span>
                   )}
                 </div>
                 <button
                   onClick={() => setSelectedProduct(product)}
-                  className="mt-6 w-full rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-accent-dark hover:shadow-md active:scale-[0.98]"
+                  className="mt-4 w-full rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-light"
                 >
                   View Specifications
                 </button>
@@ -172,11 +173,11 @@ export default function ProductsPage() {
       </Section>
 
       <Section>
-        <div className="mx-auto max-w-2xl rounded-xl border border-border bg-white p-8 text-center shadow-sm">
-          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
+        <div className="mx-auto max-w-2xl border border-border bg-white p-8 text-center">
+          <p className="text-sm font-medium uppercase tracking-widest text-accent">
             Resources
-          </span>
-          <h2 className="text-2xl font-bold text-brand">Product Catalog</h2>
+          </p>
+          <h2 className="mt-2 text-xl font-semibold text-brand">Product Catalog</h2>
           <p className="mt-3 text-sm leading-relaxed text-textMuted">
             Download our complete product catalog with detailed specifications,
             pricing ranges, and packaging options for all our premium dehydrated
@@ -185,8 +186,9 @@ export default function ProductsPage() {
           <a
             href="/catalog.pdf"
             download
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-accent-dark hover:shadow-md active:scale-[0.98]"
+            className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-light"
           >
+            <Download size={16} />
             Download Catalog
           </a>
         </div>

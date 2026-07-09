@@ -18,7 +18,7 @@ export default function Carousel({ items }: CarouselProps) {
   const startAutoplay = useCallback(() => {
     intervalRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % items.length);
-    }, 5000);
+    }, 6000);
   }, [items.length]);
 
   useEffect(() => {
@@ -46,14 +46,13 @@ export default function Carousel({ items }: CarouselProps) {
         >
           {items.map((item, index) => (
             <div key={index} className="w-full shrink-0 px-4">
-              <div className="mx-auto max-w-2xl rounded-lg border border-border bg-white p-8 text-center">
-                <span className="mb-4 block text-4xl text-accent">&ldquo;</span>
+              <div className="mx-auto max-w-2xl border border-border bg-white p-8 text-center lg:p-10">
                 <p className="text-base leading-relaxed text-text sm:text-lg">
-                  {item.quote}
+                  &ldquo;{item.quote}&rdquo;
                 </p>
-                <div className="mt-4">
-                  <p className="font-semibold text-brand">{item.name}</p>
-                  <p className="text-sm text-textMuted">{item.location}</p>
+                <div className="mt-5">
+                  <p className="text-sm font-semibold text-brand">{item.name}</p>
+                  <p className="mt-0.5 text-sm text-textMuted">{item.location}</p>
                 </div>
               </div>
             </div>
@@ -64,18 +63,18 @@ export default function Carousel({ items }: CarouselProps) {
       <div className="mt-6 flex items-center justify-center gap-4">
         <button
           onClick={prev}
-          className="rounded-full border border-border p-2 transition-colors hover:bg-surface"
+          className="rounded-md border border-border p-2 transition-colors hover:bg-surface"
           aria-label="Previous testimonial"
         >
-          <ChevronLeft size={18} className="text-text" />
+          <ChevronLeft size={16} className="text-textMuted" />
         </button>
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           {items.map((_, index) => (
             <button
               key={index}
               onClick={() => goTo(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === current ? "w-6 bg-accent2" : "w-2 bg-border"
+              className={`h-1.5 rounded-full transition-all ${
+                index === current ? "w-5 bg-brand" : "w-1.5 bg-border"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
@@ -83,10 +82,10 @@ export default function Carousel({ items }: CarouselProps) {
         </div>
         <button
           onClick={next}
-          className="rounded-full border border-border p-2 transition-colors hover:bg-surface"
+          className="rounded-md border border-border p-2 transition-colors hover:bg-surface"
           aria-label="Next testimonial"
         >
-          <ChevronRight size={18} className="text-text" />
+          <ChevronRight size={16} className="text-textMuted" />
         </button>
       </div>
     </div>

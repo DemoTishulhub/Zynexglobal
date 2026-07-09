@@ -74,7 +74,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
   if (status === "success") {
     return (
       <div className="rounded-lg border border-green-200 bg-green-50 p-8 text-center">
-        <h3 className="text-lg font-semibold text-green-800">
+        <h3 className="text-base font-semibold text-green-800">
           Message Sent Successfully!
         </h3>
         <p className="mt-2 text-sm text-green-700">
@@ -82,7 +82,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-4 text-sm font-medium text-green-700 underline hover:text-green-900"
+          className="mt-4 text-sm text-green-700 underline hover:text-green-900"
         >
           Send another message
         </button>
@@ -91,11 +91,11 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
   }
 
   const inputClasses =
-    "w-full rounded-md border border-border bg-white px-4 py-2.5 text-base text-text transition-colors focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2";
+    "w-full rounded-md border border-border bg-white px-3.5 py-2.5 text-sm text-text transition-colors placeholder:text-textMuted/60 focus:border-brand focus:outline-none";
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-      <div className="hidden">
+      <div className="absolute -m-[9999px] left-[-9999px]" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
           type="text"
@@ -110,7 +110,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-brand">
+          <label htmlFor="firstName" className="mb-1 block text-sm text-text">
             First Name
           </label>
           <input
@@ -125,7 +125,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           />
         </div>
         <div>
-          <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-brand">
+          <label htmlFor="lastName" className="mb-1 block text-sm text-text">
             Last Name
           </label>
           <input
@@ -142,9 +142,9 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-          <label htmlFor="email" className="mb-1 block text-sm font-medium text-brand">
-            Email
-          </label>
+        <label htmlFor="email" className="mb-1 block text-sm text-text">
+          Email
+        </label>
         <input
           type="email"
           id="email"
@@ -158,9 +158,9 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-          <label htmlFor="subject" className="mb-1 block text-sm font-medium text-brand">
-            Subject
-          </label>
+        <label htmlFor="subject" className="mb-1 block text-sm text-text">
+          Subject
+        </label>
         <input
           type="text"
           id="subject"
@@ -174,9 +174,9 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-          <label htmlFor="message" className="mb-1 block text-sm font-medium text-brand">
-            Message
-          </label>
+        <label htmlFor="message" className="mb-1 block text-sm text-text">
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
@@ -198,7 +198,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-dark active:scale-[0.98] disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-light disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? (
           <>

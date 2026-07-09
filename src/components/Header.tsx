@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -16,24 +16,36 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white">
+    <header
+      className={`sticky top-0 z-50 border-b transition-all duration-200 ${
+        scrolled
+          ? "border-border bg-white/80 backdrop-blur-md"
+          : "border-transparent bg-background"
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-xl font-bold">
-          <span className="text-brand">Zynex</span>
-          <span className="text-accent2">Global</span>
+        <Link href="/" className="font-heading text-xl font-bold text-brand">
+          Zynex<span className="text-accent">.</span>
         </Link>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                className={`text-sm transition-colors ${
                   pathname === link.href
-                    ? "text-accent2"
-                    : "text-brand-light hover:text-accent2"
+                    ? "font-medium text-brand"
+                    : "text-textMuted hover:text-brand"
                 }`}
               >
                 {link.label}
@@ -44,9 +56,9 @@ export default function Header() {
 
         <Link
           href="/contact-us"
-          className="hidden rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark lg:inline-flex"
+          className="hidden rounded-md bg-brand px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-light lg:inline-flex"
         >
-          GET STARTED
+          Get a Quote
         </Link>
 
         <button
@@ -54,7 +66,7 @@ export default function Header() {
           className="text-brand lg:hidden"
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
@@ -66,23 +78,23 @@ export default function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`block rounded-md px-4 py-2.5 text-sm font-medium transition-colors ${
+                  className={`block rounded-md px-4 py-2.5 text-sm transition-colors ${
                     pathname === link.href
-                      ? "text-accent2"
-                      : "text-brand-light hover:text-accent2"
+                      ? "font-medium text-brand"
+                      : "text-textMuted hover:text-brand"
                   }`}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li>
+            <li className="pt-2">
               <Link
                 href="/contact-us"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 block rounded-full bg-accent px-4 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+                className="block rounded-md bg-brand px-4 py-2.5 text-center text-sm font-medium text-white"
               >
-                GET STARTED
+                Get a Quote
               </Link>
             </li>
           </ul>

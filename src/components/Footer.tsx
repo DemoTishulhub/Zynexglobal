@@ -7,6 +7,7 @@ const importantLinks = [
   { href: "/about-us", label: "About Us" },
   { href: "/contact-us", label: "Contact Us" },
   { href: "/certificates", label: "Certificates" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
 const socials = [
@@ -30,21 +31,26 @@ const socials = [
 export default function Footer() {
   return (
     <>
-      <footer className="bg-brand-dark text-white">
+      <footer className="border-t border-border bg-surface">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <p className="mb-12 text-lg font-semibold text-white sm:text-xl">
-            Preserving Freshness, Delivering Excellence Worldwide
-          </p>
-
-          <div className="grid gap-10 md:grid-cols-3">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <h3 className="mb-5 text-base font-semibold text-white">Important Links</h3>
-              <ul className="space-y-3">
+              <p className="font-heading text-lg font-bold text-brand">
+                Zynex<span className="text-accent">.</span>
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-textMuted">
+                Preserving Freshness, Delivering Excellence Worldwide
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-brand">Important Links</h3>
+              <ul className="mt-4 space-y-2.5">
                 {importantLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-block text-sm text-white/80 transition-all hover:text-accent hover:pl-2"
+                      className="text-sm text-textMuted transition-colors hover:text-brand"
                     >
                       {link.label}
                     </Link>
@@ -54,22 +60,22 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="mb-5 text-base font-semibold text-white">Contact</h3>
-              <ul className="space-y-4 text-sm">
-                <li className="flex items-start gap-3 text-white/80">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-accent" />
+              <h3 className="text-sm font-semibold text-brand">Contact</h3>
+              <ul className="mt-4 space-y-3 text-sm text-textMuted">
+                <li className="flex items-start gap-2.5">
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-brand" />
                   <span>G-08 Govindpuram, Ghaziabad, UP 201013, India</span>
                 </li>
-                <li className="flex items-start gap-3 text-white/80">
-                  <Phone size={18} className="mt-0.5 shrink-0 text-accent" />
+                <li className="flex items-start gap-2.5">
+                  <Phone size={16} className="mt-0.5 shrink-0 text-brand" />
                   <div className="flex flex-col">
-                    <a href="tel:+917983006995" className="transition-colors hover:text-accent">+91 7983006995</a>
-                    <a href="tel:+919625289043" className="transition-colors hover:text-accent">+91 9625289043</a>
+                    <a href="tel:+917983006995" className="transition-colors hover:text-brand">+91 7983006995</a>
+                    <a href="tel:+919625289043" className="transition-colors hover:text-brand">+91 9625289043</a>
                   </div>
                 </li>
-                <li className="flex items-start gap-3 text-white/80">
-                  <Mail size={18} className="mt-0.5 shrink-0 text-accent" />
-                  <a href="mailto:admin@zynexglobal.in" className="transition-colors hover:text-accent">
+                <li className="flex items-start gap-2.5">
+                  <Mail size={16} className="mt-0.5 shrink-0 text-brand" />
+                  <a href="mailto:admin@zynexglobal.in" className="transition-colors hover:text-brand">
                     admin@zynexglobal.in
                   </a>
                 </li>
@@ -77,18 +83,18 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="mb-5 text-base font-semibold text-white">Social</h3>
-              <div className="flex gap-3">
+              <h3 className="text-sm font-semibold text-brand">Social</h3>
+              <div className="mt-4 flex gap-3">
                 {socials.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-accent2 hover:text-white"
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-textMuted transition-colors hover:border-brand hover:text-brand"
                     aria-label={s.label}
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                       <path d={s.path} />
                     </svg>
                   </a>
@@ -99,8 +105,8 @@ export default function Footer() {
         </div>
       </footer>
 
-      <div className="bg-[#0a0a0a] py-4">
-        <div className="mx-auto max-w-7xl px-4 text-center text-xs text-white/40 sm:px-6 lg:px-8">
+      <div className="border-t border-border bg-surface">
+        <div className="mx-auto max-w-7xl px-4 py-5 text-center text-sm text-textMuted sm:px-6 lg:px-8">
           &copy; {new Date().getFullYear()} Zynex Global. All Rights Reserved.
         </div>
       </div>

@@ -15,6 +15,9 @@ export default function Counter({ end, suffix = "", label, icon }: CounterProps)
   const started = useRef(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !started.current) {
@@ -37,22 +40,18 @@ export default function Counter({ end, suffix = "", label, icon }: CounterProps)
       { threshold: 0.3 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, [end]);
 
   return (
     <div ref={ref} className="text-center">
-      <div className="mb-3 flex justify-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
-          {icon}
-        </div>
-      </div>
-      <div className="text-4xl font-bold text-white">
-        {count}
+      <div className="mb-3 flex justify-center text-brand">{icon}</div>
+      <div className="font-heading text-3xl font-bold text-brand">
+        {count.toLocaleString()}
         <span className="text-accent">{suffix}</span>
       </div>
-      <p className="mt-2 text-sm text-white/80">{label}</p>
+      <p className="mt-1 text-sm text-textMuted">{label}</p>
     </div>
   );
 }

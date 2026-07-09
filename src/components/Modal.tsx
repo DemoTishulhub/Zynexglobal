@@ -45,43 +45,43 @@ export default function ProductModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
       onClick={onClose}
     >
       <div
-        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-xl"
+        className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg border border-border bg-white p-6"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="mb-4 flex items-start justify-between">
-          <h3 className="text-xl font-bold text-brand">{product.name}</h3>
+        <div className="mb-5 flex items-start justify-between">
+          <h3 className="text-lg font-semibold text-brand">{product.name}</h3>
           <button
             onClick={onClose}
-            className="rounded-full p-1 transition-colors hover:bg-surface"
+            className="rounded-md p-1 transition-colors hover:bg-surface"
             aria-label="Close"
           >
-            <X size={20} className="text-textMuted" />
+            <X size={18} className="text-textMuted" />
           </button>
         </div>
 
-        <div className="space-y-3">
+        <div className="divide-y divide-border">
           {specs.map((spec) => (
             <div
               key={spec.label}
-              className="flex justify-between border-b border-border pb-2 text-sm"
+              className="flex justify-between py-2.5 text-sm"
             >
               <span className="text-textMuted">{spec.label}</span>
-              <span className="font-semibold text-brand">{spec.value}</span>
+              <span className="font-medium text-brand">{spec.value}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-4">
-          <h4 className="mb-2 text-sm font-semibold text-brand">Applications</h4>
-          <div className="flex flex-wrap gap-2">
+        <div className="mt-5">
+          <h4 className="mb-2 text-sm font-medium text-brand">Applications</h4>
+          <div className="flex flex-wrap gap-1.5">
             {product.uses.map((use) => (
               <span
                 key={use}
-                className="rounded-full bg-surface border border-border px-3 py-1 text-xs font-medium text-textMuted"
+                className="border border-border px-2.5 py-0.5 text-sm text-textMuted"
               >
                 {use}
               </span>
@@ -91,7 +91,7 @@ export default function ProductModal({
 
         <button
           onClick={() => onInquiry(product.name)}
-          className="mt-6 w-full rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-dark active:scale-[0.98]"
+          className="mt-6 w-full rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-light"
         >
           Send Inquiry
         </button>
