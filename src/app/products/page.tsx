@@ -4,6 +4,7 @@ import { useState } from "react";
 import Section from "@/components/Section";
 import ProductModal from "@/components/Modal";
 import ContactForm from "@/components/ContactForm";
+import SectionTitle from "@/components/SectionTitle";
 
 interface Product {
   name: string;
@@ -114,16 +115,11 @@ export default function ProductsPage() {
   return (
     <>
       <Section>
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-bold sm:text-4xl">Our Products</h1>
-          <p className="mt-4 text-textMuted leading-relaxed">
-            Zynex Global exports a wide range of premium dehydrated fruits,
-            vegetables, and food ingredients from India. Every product is processed
-            under strict quality control, meeting international food safety
-            standards and customized to buyer specifications. Click on any product
-            to view full specifications and send an inquiry.
-          </p>
-        </div>
+        <SectionTitle
+          label="Our Products"
+          title="Premium Dehydrated Products"
+          description="Zynex Global exports a wide range of premium dehydrated fruits, vegetables, and food ingredients from India. Every product is processed under strict quality control, meeting international food safety standards and customized to buyer specifications."
+        />
       </Section>
 
       <Section background="surface">
@@ -132,36 +128,40 @@ export default function ProductsPage() {
             <div
               key={product.slug}
               id={product.slug}
-              className="rounded-lg border border-border bg-white transition-shadow hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="aspect-[4/3] overflow-hidden rounded-t-lg bg-surface">
+              <div className="aspect-[4/3] overflow-hidden bg-surface">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
-                <h2 className="text-lg font-semibold text-brand">{product.name}</h2>
-                <p className="mt-2 text-sm text-textMuted">{product.shortDesc}</p>
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-bold text-brand transition-colors group-hover:text-accent">
+                  {product.name}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-textMuted">
+                  {product.shortDesc}
+                </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {product.uses.slice(0, 3).map((use) => (
                     <span
                       key={use}
-                      className="rounded-full bg-surface px-3 py-1 text-xs text-textMuted"
+                      className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-textMuted"
                     >
                       {use}
                     </span>
                   ))}
                   {product.uses.length > 3 && (
-                    <span className="rounded-full bg-surface px-3 py-1 text-xs text-textMuted">
+                    <span className="rounded-full border border-border bg-white px-3 py-1 text-xs font-medium text-textMuted">
                       +{product.uses.length - 3} more
                     </span>
                   )}
                 </div>
                 <button
                   onClick={() => setSelectedProduct(product)}
-                  className="mt-4 w-full rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-brand-light active:scale-[0.98]"
+                  className="mt-6 w-full rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-light hover:shadow-md active:scale-[0.98]"
                 >
                   View Specifications
                 </button>
@@ -172,31 +172,36 @@ export default function ProductsPage() {
       </Section>
 
       <Section>
-        <div className="mx-auto max-w-2xl rounded-lg border border-border bg-white p-8 text-center">
-          <h2 className="text-xl font-bold text-brand">Product Catalog</h2>
-          <p className="mt-2 text-sm text-textMuted">
+        <div className="mx-auto max-w-2xl rounded-xl border border-border bg-white p-8 text-center shadow-sm">
+          <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
+            Resources
+          </span>
+          <h2 className="text-2xl font-bold text-brand">Product Catalog</h2>
+          <p className="mt-3 text-sm leading-relaxed text-textMuted">
             Download our complete product catalog with detailed specifications,
-            pricing ranges, and packaging options.
+            pricing ranges, and packaging options for all our premium dehydrated
+            products.
           </p>
           <a
             href="/catalog.pdf"
             download
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-dark active:scale-[0.98]"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-accent-dark hover:shadow-md active:scale-[0.98]"
           >
-            Download PDF Catalog
+            Download Catalog
           </a>
         </div>
       </Section>
 
       <Section background="surface" id="inquiry-form-section">
         <div className="mx-auto max-w-2xl">
-          <h2 className="mb-2 text-center text-2xl font-bold text-brand">
-            {inquiryProduct ? `Inquiry: ${inquiryProduct}` : "Send a Product Inquiry"}
-          </h2>
-          <p className="mb-6 text-center text-sm text-textMuted">
-            Fill out the form below and our team will respond within 24 hours.
-          </p>
-          <ContactForm prefillProduct={inquiryProduct} />
+          <SectionTitle
+            label="Get in Touch"
+            title={inquiryProduct ? `Inquiry: ${inquiryProduct}` : "Send a Product Inquiry"}
+            description="Fill out the form below and our team will respond within 24 hours with detailed information on pricing, minimum order quantities, and availability."
+          />
+          <div className="mt-8">
+            <ContactForm prefillProduct={inquiryProduct} />
+          </div>
         </div>
       </Section>
 

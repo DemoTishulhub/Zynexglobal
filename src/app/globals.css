@@ -4,25 +4,25 @@
   --font-sans: var(--font-heading);
   --font-body: var(--font-body-font);
 
-  --color-brand: #111827;
-  --color-brand-light: #1F2937;
-  --color-brand-dark: #030712;
+  --color-brand: #0B2417;
+  --color-brand-light: #143D27;
+  --color-brand-dark: #06140D;
 
-  --color-accent: #059669;
-  --color-accent-light: #10B981;
-  --color-accent-dark: #047857;
+  --color-accent: #E07B00;
+  --color-accent-light: #F59E0B;
+  --color-accent-dark: #C26800;
 
-  --color-accent2: #D97706;
-  --color-accent2-light: #F59E0B;
+  --color-accent2: #2D7A3E;
+  --color-accent2-light: #34D058;
 
   --color-background: #FFFFFF;
-  --color-surface: #F9FAFB;
+  --color-surface: #F5F2EE;
 
-  --color-text: #111827;
-  --color-textMuted: #6B7280;
+  --color-text: #1A2B20;
+  --color-textMuted: #6B7563;
 
-  --color-border: #E5E7EB;
-  --color-border-light: #F3F4F6;
+  --color-border: #E0DACF;
+  --color-border-light: #EDE9E2;
 }
 
 body {
@@ -48,4 +48,38 @@ a {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes slideShow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.partner-marquee {
+  animation: slideShow 20s linear infinite;
 }

@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import Section from "@/components/Section";
-import Button from "@/components/Button";
+import Link from "next/link";
+import SectionTitle from "@/components/SectionTitle";
 import Accordion from "@/components/Accordion";
 import Carousel from "@/components/Carousel";
+import Counter from "@/components/Counter";
 import {
   Leaf,
   Award,
   ShieldCheck,
   Globe,
+  Check,
+  ChevronRight,
+  Package,
+  Globe2,
+  Users,
+  Truck,
   ExternalLink,
   Mail,
 } from "lucide-react";
@@ -46,30 +53,37 @@ const featuredProducts = [
     name: "Dehydrated Onion Flakes",
     slug: "onion-flakes",
     desc: "White, red & pink varieties with ≤6% moisture and 24-month shelf life.",
-    href: "/products#onion-flakes",
     image: "/images/products/onion-flakes.svg",
+    href: "/products#onion-flakes",
   },
   {
     name: "Dehydrated Green Chilli Flakes",
     slug: "chilli-flakes",
     desc: "Air and freeze-dried with ≥99% purity for global seasoning needs.",
-    href: "/products#chilli-flakes",
     image: "/images/products/chilli-flakes.svg",
+    href: "/products#chilli-flakes",
   },
   {
     name: "Banana Chips",
     slug: "banana-chips",
     desc: "Dehydrated, freeze-dried, and vacuum-fried in custom packaging.",
-    href: "/products#banana-chips",
     image: "/images/products/banana-chips.svg",
+    href: "/products#banana-chips",
   },
   {
     name: "Dehydrated Mango Slices",
     slug: "mango-slices",
     desc: "Natural yellow-golden slices, dices, chunks, strips, and powder.",
-    href: "/products#mango-slices",
     image: "/images/products/mango-slices.svg",
+    href: "/products#mango-slices",
   },
+];
+
+const aboutChecklist = [
+  "24/7 Business Support & Dedicated Account Management",
+  "Secure Transportation & Food-Grade Packaging",
+  "World Wide Most Effective Export Network",
+  "Easy And Quick Quality Problem Analysis",
 ];
 
 const quickContact = [
@@ -109,32 +123,27 @@ const quickContact = [
 
 const testimonials = [
   {
-    quote:
-      "Zynex Global has been our most reliable dehydrated onion supplier. Consistent quality, on-time delivery, and excellent communication every time.",
+    quote: "Zynex Global has been our most reliable dehydrated onion supplier. Consistent quality, on-time delivery, and excellent communication every time.",
     name: "Mohammed Al Mansoori",
     location: "UAE",
   },
   {
-    quote:
-      "We import large quantities of dehydrated mango and coconut products. Zynex Global's quality grading and packaging are always top-notch.",
+    quote: "We import large quantities of dehydrated mango and coconut products. Zynex Global's quality grading and packaging are always top-notch.",
     name: "James Thompson",
     location: "UK",
   },
   {
-    quote:
-      "Professional team, competitive pricing, and products that meet EU food safety standards. Zynex is our go-to supplier from India.",
+    quote: "Professional team, competitive pricing, and products that meet EU food safety standards. Zynex is our go-to supplier from India.",
     name: "Anna Schneider",
     location: "Germany",
   },
   {
-    quote:
-      "Working with Zynex Global for over 3 years now. Their chilli flakes and banana chips are always fresh, consistent, and well-packed.",
+    quote: "Working with Zynex Global for over 3 years now. Their chilli flakes and banana chips are always fresh, consistent, and well-packed.",
     name: "Lucas Van Dijk",
     location: "Netherlands",
   },
   {
-    quote:
-      "From initial inquiry to delivery, the process was seamless. Great product quality and a team that truly understands export logistics.",
+    quote: "From initial inquiry to delivery, the process was seamless. Great product quality and a team that truly understands export logistics.",
     name: "Faisal Al Qahtani",
     location: "Saudi Arabia",
   },
@@ -143,23 +152,19 @@ const testimonials = [
 const faqs = [
   {
     question: "What is your quality assurance process?",
-    answer:
-      "Every batch undergoes multi-stage quality checks including moisture analysis, purity testing, color grading, and microbiological testing. We comply with FSSAI, APEDA, and international food safety standards to ensure every shipment meets buyer specifications.",
+    answer: "Every batch undergoes multi-stage quality checks including moisture analysis, purity testing, color grading, and microbiological testing. We comply with FSSAI, APEDA, and international food safety standards.",
   },
   {
     question: "How do I place an order?",
-    answer:
-      "Simply reach out through our contact form, email, or WhatsApp with your product requirements, quantity, and preferred packaging. Our sales team will respond within 24 hours with a detailed quotation and lead time.",
+    answer: "Simply reach out through our contact form, email, or WhatsApp with your product requirements, quantity, and preferred packaging. Our sales team will respond within 24 hours with a detailed quotation.",
   },
   {
     question: "What are your payment terms?",
-    answer:
-      "We offer flexible payment terms including advance payment, letter of credit (L/C), and T/T (telegraphic transfer) for established clients. Payment terms are finalized based on order volume and buyer profile.",
+    answer: "We offer flexible payment terms including advance payment, letter of credit (L/C), and T/T (telegraphic transfer) for established clients. Payment terms are finalized based on order volume and buyer profile.",
   },
   {
     question: "What are your typical shipping timelines?",
-    answer:
-      "Standard orders are processed and shipped within 10-15 business days. Large or custom orders may take 20-30 business days. We ship via FCL and LCL sea freight as well as air cargo, depending on buyer preference and urgency.",
+    answer: "Standard orders are processed and shipped within 10-15 business days. Large or custom orders may take 20-30 business days. We ship via FCL and LCL sea freight as well as air cargo.",
   },
 ];
 
@@ -170,191 +175,312 @@ const facilityImages = [
   { src: "/images/operations/facility-4.svg", alt: "Warehouse & Logistics" },
 ];
 
+const partners = ["UAE", "UK", "Germany", "Netherlands", "Saudi Arabia", "USA", "Australia", "France"];
+
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-background">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,var(--color-accent)/4_0%,transparent_50%),radial-gradient(circle_at_80%_20%,var(--color-accent)/3_0%,transparent_40%)]" />
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23111827' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-brand sm:text-4xl md:text-5xl lg:text-6xl">
-              Sourcing the World&apos;s Finest,{" "}
-              <span className="text-accent">Delivering Excellence.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-textMuted sm:text-lg">
-              Premium dehydrated fruits, vegetables, and food ingredients — exported
-              from India to buyers across the globe with uncompromising quality and
-              reliability.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button href="/contact-us">Contact Us</Button>
-              <Button variant="secondary" href="/products">
-                View Products
-              </Button>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {quickContact.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-textMuted transition-all hover:border-accent/30 hover:text-accent"
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-brand">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_var(--color-accent)_0%,_transparent_50%)] opacity-20" />
+          <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
+        </div>
+
+        <div className="relative mx-auto flex min-h-[600px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+          <div className="grid w-full items-center gap-8 lg:grid-cols-5">
+            <div className="lg:col-span-3">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent-light">
+                <Leaf size={14} />
+                Welcome to Zynex Global
+              </span>
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                Sourcing the World&apos;s Finest,{" "}
+                <span className="text-accent">Delivering Excellence</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
+                Premium dehydrated fruits, vegetables, and food ingredients — exported from India to buyers across the globe with uncompromising quality and reliability.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-accent-dark hover:shadow-xl"
                 >
-                  {c.icon}
-                  {c.label}
-                  <ExternalLink size={12} className="opacity-40" />
-                </a>
+                  Get a Free Quote
+                  <ChevronRight size={16} />
+                </Link>
+                <Link
+                  href="/products"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10"
+                >
+                  View Products
+                </Link>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                {quickContact.map((c) => (
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70 transition-all hover:border-accent/40 hover:text-white"
+                  >
+                    {c.icon}
+                    {c.label}
+                    <ExternalLink size={10} className="opacity-40" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden items-center justify-center lg:col-span-2 lg:flex">
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full bg-accent/20 pulse-ring" />
+                <div className="relative flex h-64 w-64 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                  <div className="flex h-48 w-48 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                    <div className="flex h-36 w-36 items-center justify-center rounded-full bg-accent/20">
+                      <Leaf size={48} className="text-accent-light" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us Section (Ezio-style two column) */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl border border-border">
+                <img src="/images/operations/facility-1.svg" alt="Zynex Global Facility" className="w-full" />
+              </div>
+              <div className="absolute -bottom-6 -right-2 flex items-center gap-3 rounded-xl bg-accent px-6 py-4 shadow-xl sm:right-8">
+                <Globe size={32} className="text-white" />
+                <div>
+                  <div className="text-2xl font-bold text-white">30+</div>
+                  <div className="text-xs text-white/70">Countries Served</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <SectionTitle
+                label="About Us"
+                title="Modern And Trusted Food Export Company"
+                center={false}
+              />
+              <p className="mt-4 text-sm leading-relaxed text-textMuted sm:text-base">
+                Zynex Global is a leading B2B exporter of premium dehydrated fruits, vegetables, and food ingredients from India. We bridge the gap between India&apos;s finest agricultural produce and international buyers who demand uncompromising quality.
+              </p>
+              <ul className="mt-6 space-y-3">
+                {aboutChecklist.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-text">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                      <Check size={13} className="text-accent" />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/about-us"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-light"
+              >
+                More About Us
+                <ChevronRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services / Value Props (Ezio-style service boxes) */}
+      <section className="bg-surface py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            label="Why Choose Us"
+            title="We Are Trusted For Our Quality"
+            description="From farm to shipment, every step of our process is designed to deliver the finest quality to your doorstep."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {valueProps.map((prop) => (
+              <div
+                key={prop.title}
+                className="group relative overflow-hidden rounded-xl border border-border bg-white p-7 transition-all hover:shadow-lg"
+              >
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-brand/5 transition-colors group-hover:bg-accent">
+                  <prop.icon size={26} className="text-brand transition-colors group-hover:text-white" />
+                </div>
+                <h3 className="mb-2 text-base font-bold text-brand">{prop.title}</h3>
+                <p className="text-sm leading-relaxed text-textMuted">{prop.desc}</p>
+                <Link
+                  href="/about-us"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent opacity-0 transition-opacity group-hover:opacity-100"
+                >
+                  Read More <ChevronRight size={14} />
+                </Link>
+                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/5 transition-transform group-hover:scale-150" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Counter / Stats Section */}
+      <section className="relative overflow-hidden bg-brand py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-accent)_0%,_transparent_70%)] opacity-10" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <Counter end={950} suffix="+" label="Delivered Shipments" icon={<Package size={28} className="text-accent-light" />} />
+            <Counter end={30} suffix="+" label="Countries Covered" icon={<Globe2 size={28} className="text-accent-light" />} />
+            <Counter end={550} suffix="+" label="Happy Clients" icon={<Users size={28} className="text-accent-light" />} />
+            <Counter end={120} suffix="+" label="Tons of Goods" icon={<Truck size={28} className="text-accent-light" />} />
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            label="Our Products"
+            title="Explore Our Core Business Verticals"
+            description="Discover our flagship products trusted by buyers across 30+ countries worldwide."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <Link
+                key={product.slug}
+                href={product.href}
+                className="group overflow-hidden rounded-xl border border-border bg-white transition-all hover:shadow-lg"
+              >
+                <div className="aspect-square overflow-hidden bg-surface">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="mb-1.5 text-sm font-bold text-brand group-hover:text-accent">
+                    {product.name}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-textMuted">{product.desc}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
+                    View Details <ChevronRight size={12} />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Operations Gallery */}
+      <section className="bg-surface py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            label="Our Operations"
+            title="Our Global Operations in Action"
+            description="A glimpse into our processing facilities, quality labs, and logistics operations."
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {facilityImages.map((img, i) => (
+              <div key={i} className="group overflow-hidden rounded-xl border border-border">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img src={img.src} alt={img.alt} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-brand/80 via-transparent to-transparent p-4">
+                    <span className="text-sm font-semibold text-white">{img.alt}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner (Ezio shipment-style) */}
+      <section className="relative overflow-hidden bg-accent py-16">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--color-accent-dark),var(--color-accent))]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
+            <div>
+              <span className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/70">Ready to Start?</span>
+              <h2 className="text-2xl font-bold text-white sm:text-3xl">
+                Are You Looking For a Reliable Export Partner?
+              </h2>
+              <p className="mt-2 max-w-xl text-sm text-white/70">
+                Get in touch today to discuss your requirements, request samples, or download our product catalog.
+              </p>
+            </div>
+            <div className="flex flex-shrink-0 flex-wrap gap-3">
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-accent-dark shadow-lg transition-all hover:shadow-xl"
+              >
+                Make an Inquiry
+                <ChevronRight size={15} />
+              </Link>
+              <a
+                href="/catalog.pdf"
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-transparent px-7 py-3 text-sm font-bold text-white transition-all hover:bg-white/10"
+              >
+                Download Catalog
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            label="Testimonials"
+            title="Let&apos;s Know What Our Clients Say"
+            description="Hear from our trusted partners across the globe."
+          />
+          <div className="mt-12">
+            <Carousel items={testimonials} />
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Countries (Ezio partner logos style) */}
+      <section className="bg-surface py-14">
+        <div className="mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
+          <p className="mb-8 text-center text-xs font-bold uppercase tracking-widest text-textMuted">
+            Trusted by Buyers Worldwide
+          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex partner-marquee gap-4">
+              {[...partners, ...partners].map((country, i) => (
+                <div
+                  key={i}
+                  className="flex h-16 min-w-[140px] items-center justify-center rounded-lg border border-border bg-white px-6"
+                >
+                  <span className="text-sm font-bold text-textMuted">{country}</span>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <Section>
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Delivering Premium Quality Worldwide
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-textMuted">
-            From farm to shipment, every step of our process is designed to deliver
-            the finest quality to your doorstep.
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {valueProps.map((prop) => (
-            <div
-              key={prop.title}
-              className="rounded-lg border border-border bg-white p-6 transition-shadow hover:shadow-md"
-            >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10">
-                <prop.icon size={24} className="text-accent" />
-              </div>
-              <h3 className="mb-2 text-base font-semibold text-brand">
-                {prop.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-textMuted">{prop.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section background="surface">
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Our Core Business Verticals
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-textMuted">
-            Explore our flagship products trusted by buyers across 30+ countries.
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <a
-              key={product.slug}
-              href={product.href}
-              className="group rounded-lg border border-border bg-white transition-shadow hover:shadow-md"
-            >
-              <div className="aspect-square overflow-hidden rounded-t-lg bg-surface">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="mb-2 text-base font-semibold text-brand">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-textMuted">{product.desc}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <Button href="/products" variant="ghost">
-            View All Products
-          </Button>
-        </div>
-      </Section>
-
-      <Section>
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Our Global Operations in Action
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-textMuted">
-            A glimpse into our processing facilities, quality labs, and logistics operations.
-          </p>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {facilityImages.map((img, i) => (
-            <div
-              key={i}
-              className="overflow-hidden rounded-lg border border-border"
-            >
-              <div className="aspect-[4/3]">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="px-4 py-2.5">
-                <p className="text-xs font-medium text-textMuted">{img.alt}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section background="surface">
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Trusted by Buyers Worldwide
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-textMuted">
-            Hear from our partners across the globe.
-          </p>
-        </div>
-        <Carousel items={testimonials} />
-      </Section>
-
-      <Section>
-        <div className="mb-12 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Frequently Asked Questions
-          </h2>
-        </div>
-        <div className="mx-auto max-w-2xl">
-          <Accordion items={faqs} />
-        </div>
-      </Section>
-
-      <section className="bg-accent py-16 text-center">
+      {/* FAQ */}
+      <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-            LET&apos;S GROW YOUR BUSINESS GLOBALLY
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/70">
-            Get in touch today to discuss your requirements, request samples, or
-            download our product catalog.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/contact-us">Request Catalog</Button>
-            <Button
-              variant="ghost"
-              className="border-white/20 text-white hover:bg-white/10 hover:text-white"
-            >
-              <a
-                href="/catalog.pdf"
-                download
-                className="flex items-center gap-2"
-              >
-                Download PDF Catalog
-              </a>
-            </Button>
+          <SectionTitle
+            label="FAQ"
+            title="Frequently Asked Questions"
+          />
+          <div className="mx-auto mt-10 max-w-2xl">
+            <Accordion items={faqs} />
           </div>
         </div>
       </section>
