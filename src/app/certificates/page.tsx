@@ -33,7 +33,7 @@ const certificates = [
 export default function CertificatesPage() {
   return (
     <>
-      <section className="bg-brand py-16 text-center">
+      <section className="bg-brand-dark py-16 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
             Quality Assurance
@@ -63,7 +63,7 @@ export default function CertificatesPage() {
         </p>
       </Section>
 
-      <section className="bg-brand py-16 text-center">
+      <section className="bg-brand-dark py-16 text-center">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white sm:text-3xl">
             Need Documentation or Samples?

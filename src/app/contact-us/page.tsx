@@ -33,7 +33,7 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-brand py-16 text-center">
+      <section className="bg-brand-dark py-16 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <span className="mb-2 inline-block text-sm font-bold uppercase tracking-widest text-accent">
             Get in Touch

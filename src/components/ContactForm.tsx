@@ -91,7 +91,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
   }
 
   const inputClasses =
-    "w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
+    "w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent2 focus:outline-none focus:ring-1 focus:ring-accent2";
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
@@ -110,7 +110,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-text">
+          <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-brand">
             First Name *
           </label>
           <input
@@ -125,7 +125,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           />
         </div>
         <div>
-          <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-text">
+          <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-brand">
             Last Name *
           </label>
           <input
@@ -142,7 +142,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-text">
+        <label htmlFor="email" className="mb-1 block text-sm font-medium text-brand">
           Email *
         </label>
         <input
@@ -158,7 +158,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="subject" className="mb-1 block text-sm font-medium text-text">
+        <label htmlFor="subject" className="mb-1 block text-sm font-medium text-brand">
           Subject *
         </label>
         <input
@@ -174,7 +174,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-text">
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-brand">
           Message *
         </label>
         <textarea

@@ -181,23 +181,23 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-brand">
+      <section className="relative overflow-hidden bg-brand-dark">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand to-brand-light" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_var(--color-accent)_0%,_transparent_50%)] opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-light" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,_var(--color-accent2)_0%,_transparent_50%)] opacity-20" />
           <div className="absolute inset-0" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px)", backgroundSize: "50px 50px" }} />
         </div>
 
         <div className="relative mx-auto flex min-h-[600px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid w-full items-center gap-8 lg:grid-cols-5">
             <div className="lg:col-span-3">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent-light">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent2/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-accent2-light">
                 <Leaf size={14} />
                 Welcome to Zynex Global
               </span>
               <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
                 Sourcing the World&apos;s Finest,{" "}
-                <span className="text-accent">Delivering Excellence</span>
+                <span className="text-accent2">Delivering Excellence</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/60 sm:text-lg">
                 Premium dehydrated fruits, vegetables, and food ingredients — exported from India to buyers across the globe with uncompromising quality and reliability.
@@ -224,7 +224,7 @@ export default function Home() {
                     href={c.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70 transition-all hover:border-accent/40 hover:text-white"
+                    className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70 transition-all hover:border-accent2/40 hover:text-white"
                   >
                     {c.icon}
                     {c.label}
@@ -331,7 +331,7 @@ export default function Home() {
       </section>
 
       {/* Counter / Stats Section */}
-      <section className="relative overflow-hidden bg-brand py-20">
+      <section className="relative overflow-hidden bg-brand-dark py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-accent)_0%,_transparent_70%)] opacity-10" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -366,11 +366,11 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="mb-1.5 text-sm font-bold text-brand group-hover:text-accent">
+                  <h3 className="mb-1.5 text-sm font-bold text-brand group-hover:text-accent2">
                     {product.name}
                   </h3>
                   <p className="text-xs leading-relaxed text-textMuted">{product.desc}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent">
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-accent2">
                     View Details <ChevronRight size={12} />
                   </span>
                 </div>

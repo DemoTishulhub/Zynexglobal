@@ -64,7 +64,7 @@ export default function Lightbox({ images }: LightboxProps) {
               />
             </div>
             <div className="p-3 text-center">
-              <p className="text-sm font-medium text-text">{image.caption}</p>
+              <p className="text-sm font-medium text-brand">{image.caption}</p>
             </div>
           </button>
         ))}
@@ -72,7 +72,7 @@ export default function Lightbox({ images }: LightboxProps) {
 
       {activeIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
           onClick={() => setActiveIndex(null)}
         >
           <button

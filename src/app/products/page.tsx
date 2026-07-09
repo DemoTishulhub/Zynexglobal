@@ -138,7 +138,7 @@ export default function ProductsPage() {
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-bold text-brand transition-colors group-hover:text-accent">
+                <h3 className="text-lg font-bold text-brand transition-colors group-hover:text-accent2">
                   {product.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-textMuted">
@@ -161,7 +161,7 @@ export default function ProductsPage() {
                 </div>
                 <button
                   onClick={() => setSelectedProduct(product)}
-                  className="mt-6 w-full rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-light hover:shadow-md active:scale-[0.98]"
+                  className="mt-6 w-full rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-accent-dark hover:shadow-md active:scale-[0.98]"
                 >
                   View Specifications
                 </button>

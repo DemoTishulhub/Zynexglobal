@@ -16,7 +16,7 @@ export default function SectionTitle({
   return (
     <div className={`${center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}`}>
       {label && (
-        <span className={`mb-2 inline-block text-sm font-bold uppercase tracking-widest ${light ? "text-accent-light" : "text-accent"}`}>
+        <span className={`mb-2 inline-block text-sm font-bold uppercase tracking-widest ${light ? "text-accent-light" : "text-accent2"}`}>
           {label}
         </span>
       )}
@@ -24,7 +24,7 @@ export default function SectionTitle({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-sm leading-relaxed sm:text-base ${light ? "text-white/60" : "text-textMuted"}`}>
+        <p className={`mt-4 text-sm leading-relaxed sm:text-base ${light ? "text-white/60" : "text-textLight"}`}>
           {description}
         </p>
       )}

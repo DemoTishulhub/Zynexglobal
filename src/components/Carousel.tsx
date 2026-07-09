@@ -47,13 +47,13 @@ export default function Carousel({ items }: CarouselProps) {
           {items.map((item, index) => (
             <div key={index} className="w-full shrink-0 px-4">
               <div className="mx-auto max-w-2xl rounded-lg border border-border bg-white p-8 text-center">
-                <span className="mb-4 block text-4xl text-accent2">&ldquo;</span>
+                <span className="mb-4 block text-4xl text-accent">&ldquo;</span>
                 <p className="text-base leading-relaxed text-text sm:text-lg">
                   {item.quote}
                 </p>
                 <div className="mt-4">
-                  <p className="font-semibold text-text">{item.name}</p>
-                  <p className="text-sm text-textMuted">{item.location}</p>
+                  <p className="font-semibold text-brand">{item.name}</p>
+                  <p className="text-sm text-textLight">{item.location}</p>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function Carousel({ items }: CarouselProps) {
               key={index}
               onClick={() => goTo(index)}
               className={`h-2 rounded-full transition-all ${
-                index === current ? "w-6 bg-accent" : "w-2 bg-border"
+                index === current ? "w-6 bg-accent2" : "w-2 bg-border"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
