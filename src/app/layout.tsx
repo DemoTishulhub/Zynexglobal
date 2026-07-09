@@ -1,31 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Sora } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import GoToTop from "@/components/GoToTop";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-body-font",
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-const sora = Sora({
-  variable: "--font-heading-font",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zynexglobal.vercel.app"),
-  title: {
-    default: "Zynex Global — Premium Dehydrated Fruits, Vegetables & Food Ingredients",
-    template: "%s | Zynex Global",
-  },
+  title: "Zynex Global — Premium Dehydrated Fruits, Vegetables & Food Ingredients",
   description:
     "Zynex Global is a leading B2B exporter of premium dehydrated fruits, vegetables, and food ingredients from India. Trusted by buyers in UAE, UK, Germany, Netherlands, and Saudi Arabia.",
   openGraph: {
@@ -55,13 +41,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang={`${inter.variable} ${sora.variable}`}>
-      <body className="flex min-h-screen flex-col bg-background text-text antialiased">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <GoToTop />
-      </body>
+    <html lang="en" className={inter.variable}>
+      <body className="bg-white text-gray-900 antialiased">{children}</body>
     </html>
   );
 }
