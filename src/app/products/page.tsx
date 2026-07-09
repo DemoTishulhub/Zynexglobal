@@ -8,6 +8,7 @@ import ContactForm from "@/components/ContactForm";
 interface Product {
   name: string;
   slug: string;
+  image: string;
   shortDesc: string;
   varieties: string;
   dryingMethods: string;
@@ -23,6 +24,7 @@ const products: Product[] = [
   {
     name: "Onion Flakes",
     slug: "onion-flakes",
+    image: "/images/products/onion-flakes.svg",
     shortDesc: "White, red & pink varieties with ≤6% moisture and 24-month shelf life.",
     varieties: "White, Red, Pink",
     dryingMethods: "Air Dried, Vacuum Dried, Freeze Dried",
@@ -36,6 +38,7 @@ const products: Product[] = [
   {
     name: "Dehydrated Mango",
     slug: "mango-slices",
+    image: "/images/products/mango-slices.svg",
     shortDesc: "Slices, dices, chunks, strips & powder with natural yellow-golden color.",
     varieties: "Slices, Dices, Chunks, Strips, Powder",
     dryingMethods: "Air Dried, Vacuum Dried, Freeze Dried",
@@ -49,6 +52,7 @@ const products: Product[] = [
   {
     name: "Banana Chips",
     slug: "banana-chips",
+    image: "/images/products/banana-chips.svg",
     shortDesc: "Dehydrated, freeze-dried, fried & vacuum-fried in custom packaging.",
     varieties: "Dehydrated Slices, Freeze Dried, Fried, Vacuum Fried",
     dryingMethods: "Dehydrated, Freeze Dried, Fried, Vacuum Fried",
@@ -62,6 +66,7 @@ const products: Product[] = [
   {
     name: "Green Chilly Flakes",
     slug: "chilli-flakes",
+    image: "/images/products/chilli-flakes.svg",
     shortDesc: "Flakes & crushed varieties with ≥99% purity and ≤6% moisture.",
     varieties: "Flakes, Crushed",
     dryingMethods: "Air Dried, Freeze Dried",
@@ -75,6 +80,7 @@ const products: Product[] = [
   {
     name: "Coconut Chips",
     slug: "coconut-chips",
+    image: "/images/products/coconut-chips.svg",
     shortDesc: "Chips, shreds & flakes with ≤3% moisture and natural white color.",
     varieties: "Chips, Shreds, Flakes",
     dryingMethods: "Sun Dried, Air Dried, Toasted",
@@ -88,6 +94,7 @@ const products: Product[] = [
   {
     name: "Dehydrated Tomato",
     slug: "tomato-flakes",
+    image: "/images/products/tomato-flakes.svg",
     shortDesc: "Flakes, granules & powder with ≤5% moisture and deep red color.",
     varieties: "Flakes, Granules, Powder",
     dryingMethods: "Air Dried, Freeze Dried",
@@ -106,7 +113,6 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* Intro */}
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-3xl font-bold sm:text-4xl">Our Products</h1>
@@ -120,7 +126,6 @@ export default function ProductsPage() {
         </div>
       </Section>
 
-      {/* Product Grid */}
       <Section background="surface">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
@@ -129,11 +134,12 @@ export default function ProductsPage() {
               id={product.slug}
               className="rounded-lg border border-border bg-white transition-shadow hover:shadow-md"
             >
-              {/* TODO: replace placeholder image */}
               <div className="aspect-[4/3] overflow-hidden rounded-t-lg bg-surface">
-                <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface to-border-light">
-                  <span className="text-xs text-textMuted">{product.name}</span>
-                </div>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="p-6">
                 <h2 className="text-lg font-semibold text-brand">{product.name}</h2>
@@ -165,7 +171,6 @@ export default function ProductsPage() {
         </div>
       </Section>
 
-      {/* Catalog Download */}
       <Section>
         <div className="mx-auto max-w-2xl rounded-lg border border-border bg-white p-8 text-center">
           <h2 className="text-xl font-bold text-brand">Product Catalog</h2>
@@ -173,7 +178,6 @@ export default function ProductsPage() {
             Download our complete product catalog with detailed specifications,
             pricing ranges, and packaging options.
           </p>
-          {/* TODO: client must supply the actual catalog.pdf file — place it in /public/catalog.pdf */}
           <a
             href="/catalog.pdf"
             download
@@ -184,8 +188,7 @@ export default function ProductsPage() {
         </div>
       </Section>
 
-      {/* Inquiry Form */}
-      <Section background="surface">
+      <Section background="surface" id="inquiry-form-section">
         <div className="mx-auto max-w-2xl">
           <h2 className="mb-2 text-center text-2xl font-bold text-brand">
             {inquiryProduct ? `Inquiry: ${inquiryProduct}` : "Send a Product Inquiry"}
@@ -197,7 +200,6 @@ export default function ProductsPage() {
         </div>
       </Section>
 
-      {/* Product Modal */}
       <ProductModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}

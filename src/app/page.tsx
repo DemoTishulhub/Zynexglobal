@@ -47,24 +47,28 @@ const featuredProducts = [
     slug: "onion-flakes",
     desc: "White, red & pink varieties with ≤6% moisture and 24-month shelf life.",
     href: "/products#onion-flakes",
+    image: "/images/products/onion-flakes.svg",
   },
   {
     name: "Dehydrated Green Chilli Flakes",
     slug: "chilli-flakes",
     desc: "Air and freeze-dried with ≥99% purity for global seasoning needs.",
     href: "/products#chilli-flakes",
+    image: "/images/products/chilli-flakes.svg",
   },
   {
     name: "Banana Chips",
     slug: "banana-chips",
     desc: "Dehydrated, freeze-dried, and vacuum-fried in custom packaging.",
     href: "/products#banana-chips",
+    image: "/images/products/banana-chips.svg",
   },
   {
     name: "Dehydrated Mango Slices",
     slug: "mango-slices",
     desc: "Natural yellow-golden slices, dices, chunks, strips, and powder.",
     href: "/products#mango-slices",
+    image: "/images/products/mango-slices.svg",
   },
 ];
 
@@ -160,27 +164,25 @@ const faqs = [
 ];
 
 const facilityImages = [
-  { src: "/images/operations/facility-1.jpg", alt: "Processing facility" },
-  { src: "/images/operations/facility-2.jpg", alt: "Quality control lab" },
-  { src: "/images/operations/facility-3.jpg", alt: "Packaging line" },
-  { src: "/images/operations/facility-4.jpg", alt: "Warehouse and logistics" },
+  { src: "/images/operations/facility-1.svg", alt: "Processing Facility" },
+  { src: "/images/operations/facility-2.svg", alt: "Quality Control Lab" },
+  { src: "/images/operations/facility-3.svg", alt: "Packaging Line" },
+  { src: "/images/operations/facility-4.svg", alt: "Warehouse & Logistics" },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-brand">
-        {/* TODO: replace placeholder with hero background image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-dark to-brand" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-accent)_0%,_transparent_50%)] opacity-20" />
-        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
+      <section className="relative overflow-hidden bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,var(--color-accent)/4_0%,transparent_50%),radial-gradient(circle_at_80%_20%,var(--color-accent)/3_0%,transparent_40%)]" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23111827' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-brand sm:text-4xl md:text-5xl lg:text-6xl">
               Sourcing the World&apos;s Finest,{" "}
               <span className="text-accent">Delivering Excellence.</span>
             </h1>
-            <p className="mt-6 text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-textMuted sm:text-lg">
               Premium dehydrated fruits, vegetables, and food ingredients — exported
               from India to buyers across the globe with uncompromising quality and
               reliability.
@@ -198,11 +200,11 @@ export default function Home() {
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                  className="flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-textMuted transition-all hover:border-accent/30 hover:text-accent"
                 >
                   {c.icon}
                   {c.label}
-                  <ExternalLink size={12} className="opacity-50" />
+                  <ExternalLink size={12} className="opacity-40" />
                 </a>
               ))}
             </div>
@@ -210,7 +212,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Props */}
       <Section>
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -239,7 +240,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Featured Products */}
       <Section background="surface">
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -254,18 +254,21 @@ export default function Home() {
             <a
               key={product.slug}
               href={product.href}
-              className="group rounded-lg border border-border bg-white p-6 transition-shadow hover:shadow-md"
+              className="group rounded-lg border border-border bg-white transition-shadow hover:shadow-md"
             >
-              {/* TODO: replace placeholder image */}
-              <div className="mb-4 aspect-square overflow-hidden rounded-lg bg-surface">
-                <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface to-border-light">
-                  <span className="text-xs text-textMuted">Product Image</span>
-                </div>
+              <div className="aspect-square overflow-hidden rounded-t-lg bg-surface">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-              <h3 className="mb-2 text-base font-semibold text-brand">
-                {product.name}
-              </h3>
-              <p className="text-sm text-textMuted">{product.desc}</p>
+              <div className="p-5">
+                <h3 className="mb-2 text-base font-semibold text-brand">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-textMuted">{product.desc}</p>
+              </div>
             </a>
           ))}
         </div>
@@ -276,7 +279,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Operations Gallery */}
       <Section>
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -292,18 +294,21 @@ export default function Home() {
               key={i}
               className="overflow-hidden rounded-lg border border-border"
             >
-              {/* TODO: replace placeholder image */}
-              <div className="aspect-[4/3] bg-surface">
-                <div className="flex h-full items-center justify-center">
-                  <span className="text-xs text-textMuted">{img.alt}</span>
-                </div>
+              <div className="aspect-[4/3]">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="px-4 py-2.5">
+                <p className="text-xs font-medium text-textMuted">{img.alt}</p>
               </div>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* Testimonials */}
       <Section background="surface">
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -316,7 +321,6 @@ export default function Home() {
         <Carousel items={testimonials} />
       </Section>
 
-      {/* FAQ */}
       <Section>
         <div className="mb-12 text-center">
           <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
@@ -328,20 +332,26 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Bottom CTA */}
-      <section className="bg-brand py-16 text-center">
+      <section className="bg-accent py-16 text-center">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
             LET&apos;S GROW YOUR BUSINESS GLOBALLY
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/60">
+          <p className="mx-auto mt-3 max-w-xl text-white/70">
             Get in touch today to discuss your requirements, request samples, or
             download our product catalog.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Button href="/contact-us">Request Catalog</Button>
-            <Button variant="ghost" className="border-white/20 text-white hover:bg-white/10 hover:text-white">
-              <a href="/catalog.pdf" download className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              className="border-white/20 text-white hover:bg-white/10 hover:text-white"
+            >
+              <a
+                href="/catalog.pdf"
+                download
+                className="flex items-center gap-2"
+              >
                 Download PDF Catalog
               </a>
             </Button>

@@ -17,27 +17,38 @@ export default function Accordion({ items }: AccordionProps) {
 
   return (
     <div className="divide-y divide-border rounded-lg border border-border bg-white">
-      {items.map((item, index) => (
-        <div key={index}>
-          <button
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-brand transition-colors hover:bg-surface/50"
-          >
-            <span>{item.question}</span>
-            <ChevronDown
-              size={18}
-              className={`shrink-0 text-textMuted transition-transform ${
-                openIndex === index ? "rotate-180" : ""
+      {items.map((item, index) => {
+        const isOpen = openIndex === index;
+        return (
+          <div key={index}>
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-semibold text-text transition-colors hover:bg-surface/50"
+            >
+              <span>{item.question}</span>
+              <ChevronDown
+                size={18}
+                className={`shrink-0 text-textMuted transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <div
+              className={`grid transition-all duration-300 ease-in-out ${
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
               }`}
-            />
-          </button>
-          {openIndex === index && (
-            <div className="px-6 pb-4 text-sm leading-relaxed text-textMuted">
-              {item.answer}
+            >
+              <div className="overflow-hidden">
+                <div className="px-6 pb-4 text-sm leading-relaxed text-textMuted">
+                  {item.answer}
+                </div>
+              </div>
             </div>
-          )}
-        </div>
-      ))}
+          </div>
+        );
+      })}
     </div>
   );
 }

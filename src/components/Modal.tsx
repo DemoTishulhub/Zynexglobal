@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { X } from "lucide-react";
 
 interface ProductSpec {
@@ -54,7 +53,7 @@ export default function ProductModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-start justify-between">
-          <h3 className="text-xl font-bold text-brand">{product.name}</h3>
+          <h3 className="text-xl font-bold text-text">{product.name}</h3>
           <button
             onClick={onClose}
             className="rounded-full p-1 transition-colors hover:bg-surface"
@@ -68,16 +67,16 @@ export default function ProductModal({
           {specs.map((spec) => (
             <div
               key={spec.label}
-              className="flex justify-between border-b border-border-light pb-2 text-sm"
+              className="flex justify-between border-b border-border pb-2 text-sm"
             >
               <span className="text-textMuted">{spec.label}</span>
-              <span className="font-medium text-brand">{spec.value}</span>
+              <span className="font-semibold text-text">{spec.value}</span>
             </div>
           ))}
         </div>
 
         <div className="mt-4">
-          <h4 className="mb-2 text-sm font-semibold text-brand">Applications</h4>
+          <h4 className="mb-2 text-sm font-semibold text-text">Applications</h4>
           <div className="flex flex-wrap gap-2">
             {product.uses.map((use) => (
               <span

@@ -19,13 +19,19 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
           },
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://api.resend.com;",
+              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' https://api.resend.com https://*.turso.io;",
           },
+        ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [
+          { key: "Cache-Control", value: "no-store" },
         ],
       },
     ];

@@ -17,7 +17,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary:
     "bg-brand text-white hover:bg-brand-light shadow-sm hover:shadow-md",
   ghost:
-    "border border-border bg-transparent text-brand hover:bg-surface",
+    "border border-border text-text hover:bg-surface",
 };
 
 export default function Button({

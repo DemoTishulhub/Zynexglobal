@@ -3,7 +3,8 @@ import Section from "@/components/Section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Zynex Global privacy policy — how we collect, use, and protect your information.",
+  description:
+    "Zynex Global privacy policy — how we collect, use, and protect your information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -15,7 +16,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-textMuted">
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               1. Information We Collect
             </h2>
             <p>
@@ -26,7 +27,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               2. How We Use Your Information
             </h2>
             <p>
@@ -38,8 +39,8 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
-              3. Data Storage & Security
+            <h2 className="mb-2 text-lg font-semibold text-text">
+              3. Data Storage &amp; Security
             </h2>
             <p>
               Your data is stored securely and protected using industry-standard
@@ -49,7 +50,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               4. Cookies
             </h2>
             <p>
@@ -59,7 +60,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               5. Third-Party Links
             </h2>
             <p>
@@ -70,7 +71,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               6. Your Rights
             </h2>
             <p>
@@ -87,13 +88,13 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="mb-2 text-lg font-semibold text-brand">
+            <h2 className="mb-2 text-lg font-semibold text-text">
               7. Contact
             </h2>
             <p>
               For any privacy-related concerns, please contact us at:
               <br />
-              <strong>Zynex Global</strong>
+              <strong className="text-text">Zynex Global</strong>
               <br />
               G-08 Govindpuram, Ghaziabad, UP 201013, India
               <br />

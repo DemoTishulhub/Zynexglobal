@@ -4,25 +4,25 @@
   --font-sans: var(--font-heading);
   --font-body: var(--font-body-font);
 
-  --color-brand: #0F3D3E;
-  --color-brand-light: #174F50;
-  --color-brand-dark: #0A2A2B;
+  --color-brand: #111827;
+  --color-brand-light: #1F2937;
+  --color-brand-dark: #030712;
 
-  --color-accent: #E08A2C;
-  --color-accent-light: #EFA34E;
-  --color-accent-dark: #C07424;
+  --color-accent: #059669;
+  --color-accent-light: #10B981;
+  --color-accent-dark: #047857;
 
-  --color-accent2: #C1502E;
-  --color-accent2-light: #D4674A;
+  --color-accent2: #D97706;
+  --color-accent2-light: #F59E0B;
 
-  --color-background: #FBF7F0;
-  --color-surface: #F3ECDF;
+  --color-background: #FFFFFF;
+  --color-surface: #F9FAFB;
 
-  --color-text: #1C211F;
-  --color-textMuted: #6B6259;
+  --color-text: #111827;
+  --color-textMuted: #6B7280;
 
-  --color-border: #E5DCC9;
-  --color-border-light: #F0EBE0;
+  --color-border: #E5E7EB;
+  --color-border-light: #F3F4F6;
 }
 
 body {
@@ -33,7 +33,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans), system-ui, sans-serif;
-  color: var(--color-brand);
+  color: var(--color-text);
 }
 
 a {
@@ -44,4 +44,8 @@ a {
 ::selection {
   background-color: var(--color-accent);
   color: white;
+}
+
+html {
+  scroll-behavior: smooth;
 }

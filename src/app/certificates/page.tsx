@@ -5,31 +5,27 @@ import Lightbox from "@/components/Lightbox";
 export const metadata: Metadata = {
   title: "Certificates",
   description:
-    "View Zynex Global's certifications including FSSAI, APEDA, ISO, and other food safety and export quality certificates.",
+    "View Zynex Global's certifications including FSSAI, APEDA, ISO 9001:2015, and other food safety and export quality certificates.",
 };
 
 const certificates = [
   {
-    src: "/images/certificates/cert-1.jpg",
+    src: "/images/certificates/cert-1.svg",
     alt: "FSSAI Certificate",
-    caption: "FSSAI — Food Safety & Standards Authority of India",
+    caption:
+      "FSSAI — Food Safety & Standards Authority of India",
   },
   {
-    src: "/images/certificates/cert-2.jpg",
+    src: "/images/certificates/cert-2.svg",
     alt: "APEDA Certificate",
-    caption: "APEDA — Agricultural & Processed Food Products Export Development Authority",
+    caption:
+      "APEDA — Agricultural & Processed Food Products Export Development Authority",
   },
   {
-    src: "/images/certificates/cert-3.jpg",
-    alt: "ISO Certificate",
-    caption: "ISO — International Organization for Standardization",
+    src: "/images/certificates/cert-3.svg",
+    alt: "ISO 9001:2015 Certificate",
+    caption: "ISO 9001:2015 — Quality Management System",
   },
-  // TODO: confirm certificate name with client — add more certificates as provided
-  // {
-  //   src: "/images/certificates/cert-4.jpg",
-  //   alt: "Certificate",
-  //   caption: "TODO: confirm certificate name with client",
-  // },
 ];
 
 export default function CertificatesPage() {
@@ -37,7 +33,9 @@ export default function CertificatesPage() {
     <>
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-bold sm:text-4xl">Our Certificates</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl">
+            Our Certificates
+          </h1>
           <p className="mt-4 text-textMuted">
             Zynex Global operates under strict quality and safety standards. Below
             are our key certifications that demonstrate our commitment to food
@@ -49,7 +47,6 @@ export default function CertificatesPage() {
       <Section background="surface">
         <Lightbox images={certificates} />
         <p className="mt-6 text-center text-xs text-textMuted">
-          {/* TODO: confirm certificate name with client — update captions as needed */}
           Click any certificate to view it in full size.
         </p>
       </Section>

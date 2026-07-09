@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface CarouselProps {
   items: {
@@ -45,17 +45,14 @@ export default function Carousel({ items }: CarouselProps) {
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {items.map((item, index) => (
-            <div
-              key={index}
-              className="w-full shrink-0 px-4"
-            >
+            <div key={index} className="w-full shrink-0 px-4">
               <div className="mx-auto max-w-2xl rounded-lg border border-border bg-white p-8 text-center">
                 <span className="mb-4 block text-4xl text-accent2">&ldquo;</span>
                 <p className="text-base leading-relaxed text-text sm:text-lg">
                   {item.quote}
                 </p>
                 <div className="mt-4">
-                  <p className="font-semibold text-brand">{item.name}</p>
+                  <p className="font-semibold text-text">{item.name}</p>
                   <p className="text-sm text-textMuted">{item.location}</p>
                 </div>
               </div>
@@ -70,7 +67,7 @@ export default function Carousel({ items }: CarouselProps) {
           className="rounded-full border border-border p-2 transition-colors hover:bg-surface"
           aria-label="Previous testimonial"
         >
-          <ChevronLeft size={18} className="text-brand" />
+          <ChevronLeft size={18} className="text-text" />
         </button>
         <div className="flex gap-2">
           {items.map((_, index) => (
@@ -89,7 +86,7 @@ export default function Carousel({ items }: CarouselProps) {
           className="rounded-full border border-border p-2 transition-colors hover:bg-surface"
           aria-label="Next testimonial"
         >
-          <ChevronRight size={18} className="text-brand" />
+          <ChevronRight size={18} className="text-text" />
         </button>
       </div>
     </div>

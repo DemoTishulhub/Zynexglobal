@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#FFFEF7"/>
+  <rect x="20" y="20" width="760" height="560" rx="4" fill="none" stroke="#1565C0" stroke-width="3"/>
+  <rect x="28" y="28" width="744" height="544" rx="2" fill="none" stroke="#1565C0" stroke-width="1" stroke-dasharray="8 4"/>
+  <circle cx="400" cy="110" r="50" fill="none" stroke="#1565C0" stroke-width="2"/>
+  <circle cx="400" cy="110" r="42" fill="none" stroke="#1565C0" stroke-width="1"/>
+  <text x="400" y="118" text-anchor="middle" font-family="system-ui, serif" font-size="16" font-weight="bold" fill="#1565C0">ISO</text>
+  <text x="400" y="200" text-anchor="middle" font-family="system-ui, serif" font-size="26" font-weight="bold" fill="#333">ISO 9001:2015</text>
+  <text x="400" y="232" text-anchor="middle" font-family="system-ui, serif" font-size="16" fill="#555">Quality Management System</text>
+  <line x1="220" y1="250" x2="580" y2="250" stroke="#1565C0" stroke-width="1"/>
+  <text x="400" y="290" text-anchor="middle" font-family="system-ui, serif" font-size="15" fill="#555">Certificate No: QMS-2024-IN-56789</text>
+  <text x="400" y="325" text-anchor="middle" font-family="system-ui, serif" font-size="14" fill="#777">This is to certify that</text>
+  <text x="400" y="360" text-anchor="middle" font-family="system-ui, serif" font-size="20" font-weight="bold" fill="#333">Zynex Global</text>
+  <text x="400" y="390" text-anchor="middle" font-family="system-ui, serif" font-size="13" fill="#777">G-08 Govindpuram, Ghaziabad, UP 201013, India</text>
+  <text x="400" y="430" text-anchor="middle" font-family="system-ui, serif" font-size="13" fill="#777">has implemented and maintains a Quality Management System</text>
+  <text x="400" y="455" text-anchor="middle" font-family="system-ui, serif" font-size="13" fill="#777">that fulfills the requirements of ISO 9001:2015 for the scope of</text>
+  <text x="400" y="480" text-anchor="middle" font-family="system-ui, serif" font-size="13" fill="#777">processing and export of dehydrated food products.</text>
+  <text x="400" y="525" text-anchor="middle" font-family="system-ui, serif" font-size="12" fill="#999">Valid from: 15-Mar-2024 to 14-Mar-2027</text>
+  <line x1="150" y1="545" x2="300" y2="545" stroke="#999" stroke-width="1"/>
+  <text x="225" y="562" text-anchor="middle" font-family="system-ui, serif" font-size="11" fill="#999">Certification Body</text>
+</svg>

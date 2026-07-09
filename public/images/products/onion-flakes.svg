@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#FAFAF5"/>
+  <ellipse cx="300" cy="220" rx="140" ry="100" fill="#F5F0E0" opacity="0.6"/>
+  <ellipse cx="300" cy="200" rx="100" ry="80" fill="#EDE8D0" opacity="0.5"/>
+  <g opacity="0.7">
+    <ellipse cx="260" cy="180" rx="25" ry="18" fill="#FFF8E8" stroke="#E8DCC8" stroke-width="1"/>
+    <ellipse cx="310" cy="175" rx="28" ry="20" fill="#FFF8E8" stroke="#E8DCC8" stroke-width="1"/>
+    <ellipse cx="280" cy="210" rx="22" ry="16" fill="#FFFDF5" stroke="#E8DCC8" stroke-width="1"/>
+    <ellipse cx="330" cy="205" rx="26" ry="19" fill="#FFF8E8" stroke="#E8DCC8" stroke-width="1"/>
+    <ellipse cx="350" cy="190" rx="20" ry="15" fill="#FFFDF5" stroke="#E8DCC8" stroke-width="1"/>
+    <ellipse cx="240" cy="200" rx="18" ry="14" fill="#FFF8E8" stroke="#E8DCC8" stroke-width="1"/>
+  </g>
+  <text x="300" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#9CA3AF">Onion Flakes</text>
+</svg>

@@ -4,6 +4,7 @@ import { rateLimit } from "@/lib/rate-limit";
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "admin@zynexglobal.in";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const ALLOWED_ORIGINS = ["https://zynexglobal.vercel.app", "http://localhost:3000"];
 
 function sanitize(str: string): string {
   return str
@@ -11,15 +12,37 @@ function sanitize(str: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;");
+    .replace(/'/g, "&#x27;")
+    .replace(/\0/g, "")
+    .trim();
 }
 
 function validateEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(email);
+}
+
+function containsSpam(text: string): boolean {
+  const spamPatterns = [
+    /viagra/i,
+    /casino/i,
+    /lottery/i,
+    /bitcoin.*invest/i,
+    /crypto.*invest/i,
+    /make money.*fast/i,
+    /http[s]?:\/\//i,
+    /\[url/i,
+    /\[link/i,
+  ];
+  return spamPatterns.some((p) => p.test(text));
 }
 
 export async function POST(request: Request) {
   try {
+    const origin = request.headers.get("origin") || "";
+    if (ALLOWED_ORIGINS.length > 0 && !ALLOWED_ORIGINS.includes(origin) && !origin.includes("localhost")) {
+      return NextResponse.json({ error: "Invalid origin." }, { status: 403 });
+    }
+
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       request.headers.get("x-real-ip") ||
@@ -46,13 +69,6 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!validateEmail(email)) {
-      return NextResponse.json(
-        { error: "Please provide a valid email address." },
-        { status: 400 }
-      );
-    }
-
     if (firstName.length > 100 || lastName.length > 100 || email.length > 200 || subject.length > 300 || message.length > 5000) {
       return NextResponse.json(
         { error: "Input exceeds maximum allowed length." },
@@ -60,15 +76,34 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!validateEmail(email)) {
+      return NextResponse.json(
+        { error: "Please provide a valid email address." },
+        { status: 400 }
+      );
+    }
+
+    if (containsSpam(subject) || containsSpam(message) || containsSpam(email)) {
+      return NextResponse.json({ success: true });
+    }
+
+    const sanitizedData = {
+      firstName: sanitize(firstName),
+      lastName: sanitize(lastName),
+      email: sanitize(email),
+      subject: sanitize(subject),
+      message: sanitize(message),
+    };
+
     try {
       await initDB();
       await insertSubmission({
-        first_name: firstName.trim(),
-        last_name: lastName.trim(),
-        email: email.trim(),
-        subject: subject.trim(),
-        message: message.trim(),
-        product_interest: body.product_interest || undefined,
+        first_name: sanitizedData.firstName,
+        last_name: sanitizedData.lastName,
+        email: sanitizedData.email,
+        subject: sanitizedData.subject,
+        message: sanitizedData.message,
+        product_interest: body.product_interest ? sanitize(body.product_interest) : undefined,
       });
     } catch (dbError) {
       console.error("Database error:", dbError);
@@ -85,14 +120,19 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "Zynex Global Website <onboarding@resend.dev>",
             to: [CONTACT_EMAIL],
-            subject: `Contact Form: ${subject}`,
+            subject: `[Website] ${sanitizedData.subject}`,
             html: `
-              <h2>New Contact Form Submission</h2>
-              <p><strong>Name:</strong> ${sanitize(firstName)} ${sanitize(lastName)}</p>
-              <p><strong>Email:</strong> ${sanitize(email)}</p>
-              <p><strong>Subject:</strong> ${sanitize(subject)}</p>
-              <p><strong>Message:</strong></p>
-              <p>${sanitize(message)}</p>
+              <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #111827;">New Contact Form Submission</h2>
+                <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 16px 0;" />
+                <p><strong>Name:</strong> ${sanitizedData.firstName} ${sanitizedData.lastName}</p>
+                <p><strong>Email:</strong> ${sanitizedData.email}</p>
+                <p><strong>Subject:</strong> ${sanitizedData.subject}</p>
+                ${body.product_interest ? `<p><strong>Product Interest:</strong> ${sanitize(body.product_interest)}</p>` : ""}
+                <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 16px 0;" />
+                <p><strong>Message:</strong></p>
+                <p>${sanitizedData.message.replace(/\n/g, "<br />")}</p>
+              </div>
             `,
           }),
         });

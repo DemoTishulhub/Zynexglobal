@@ -90,6 +90,9 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
     );
   }
 
+  const inputClasses =
+    "w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
+
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
       <div className="hidden">
@@ -107,7 +110,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-brand">
+          <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-text">
             First Name *
           </label>
           <input
@@ -117,12 +120,12 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
             required
             value={formState.firstName}
             onChange={handleChange}
-            className="w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            className={inputClasses}
             placeholder="John"
           />
         </div>
         <div>
-          <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-brand">
+          <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-text">
             Last Name *
           </label>
           <input
@@ -132,14 +135,14 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
             required
             value={formState.lastName}
             onChange={handleChange}
-            className="w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+            className={inputClasses}
             placeholder="Doe"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-brand">
+        <label htmlFor="email" className="mb-1 block text-sm font-medium text-text">
           Email *
         </label>
         <input
@@ -149,13 +152,13 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           required
           value={formState.email}
           onChange={handleChange}
-          className="w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          className={inputClasses}
           placeholder="john@company.com"
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="mb-1 block text-sm font-medium text-brand">
+        <label htmlFor="subject" className="mb-1 block text-sm font-medium text-text">
           Subject *
         </label>
         <input
@@ -165,13 +168,13 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           required
           value={formState.subject}
           onChange={handleChange}
-          className="w-full rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          className={inputClasses}
           placeholder="Product Inquiry"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-brand">
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-text">
           Message *
         </label>
         <textarea
@@ -181,7 +184,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           rows={5}
           value={formState.message}
           onChange={handleChange}
-          className="w-full resize-y rounded-md border border-border bg-white px-4 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+          className={`resize-y ${inputClasses}`}
           placeholder="Tell us about your requirements..."
         />
       </div>

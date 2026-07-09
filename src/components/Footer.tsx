@@ -41,24 +41,24 @@ const footerNavLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-brand text-white/80">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-3">
+    <footer className="bg-brand text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-3">
           <div>
             <Link href="/" className="text-xl font-bold text-white">
               Zynex<span className="text-accent">Global</span>
             </Link>
-            <p className="mt-3 text-sm text-white/60">
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/60">
               Preserving Freshness, Delivering Excellence Worldwide
             </p>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-5 flex gap-3">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 transition-colors hover:text-accent"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/60 transition-all hover:bg-accent hover:text-white"
                   aria-label={s.label}
                 >
                   {s.svg}
@@ -68,10 +68,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/40">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/40">
               Quick Links
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {footerNavLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -94,19 +94,23 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white/40">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/40">
               Contact
             </h4>
             <ul className="space-y-3 text-sm text-white/60">
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2.5">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
                 <span>G-08 Govindpuram, Ghaziabad, UP 201013, India</span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2.5">
                 <Phone size={16} className="shrink-0 text-accent" />
-                <span>+91 7983006995 / +91 9625289043</span>
+                <span>
+                  <a href="tel:+917983006995" className="transition-colors hover:text-accent">+91 7983006995</a>
+                  {" / "}
+                  <a href="tel:+919625289043" className="transition-colors hover:text-accent">+91 9625289043</a>
+                </span>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2.5">
                 <Mail size={16} className="shrink-0 text-accent" />
                 <a
                   href="mailto:admin@zynexglobal.in"
@@ -119,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/40">
+        <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/40">
           &copy; {new Date().getFullYear()} Zynex Global. All rights reserved.
         </div>
       </div>
