@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Printer } from "lucide-react";
 
 const importantLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/about-us", label: "About Us" },
-  { href: "/contact-us", label: "Contact Us" },
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact Us" },
   { href: "/certificates", label: "Certificates" },
-  { href: "/privacy-policy", label: "Privacy Policy" },
 ];
 
 const socials = [
@@ -31,67 +30,24 @@ const socials = [
 export default function Footer() {
   return (
     <>
-      <footer className="border-t border-border bg-surface">
+      <footer className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-12 md:grid-cols-3">
             <div>
-              <p className="font-heading text-lg font-bold text-brand">
-                Zynex<span className="text-accent">.</span>
+              <p className="text-lg font-bold tracking-tight text-gray-900">
+                Zynex Global
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-textMuted">
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-gray-500">
                 Preserving Freshness, Delivering Excellence Worldwide
               </p>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-brand">Important Links</h3>
-              <ul className="mt-4 space-y-2.5">
-                {importantLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-textMuted transition-colors hover:text-brand"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-brand">Contact</h3>
-              <ul className="mt-4 space-y-3 text-sm text-textMuted">
-                <li className="flex items-start gap-2.5">
-                  <MapPin size={16} className="mt-0.5 shrink-0 text-brand" />
-                  <span>G-08 Govindpuram, Ghaziabad, UP 201013, India</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Phone size={16} className="mt-0.5 shrink-0 text-brand" />
-                  <div className="flex flex-col">
-                    <a href="tel:+917983006995" className="transition-colors hover:text-brand">+91 7983006995</a>
-                    <a href="tel:+919625289043" className="transition-colors hover:text-brand">+91 9625289043</a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Mail size={16} className="mt-0.5 shrink-0 text-brand" />
-                  <a href="mailto:admin@zynexglobal.in" className="transition-colors hover:text-brand">
-                    admin@zynexglobal.in
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-brand">Social</h3>
-              <div className="mt-4 flex gap-3">
+              <div className="mt-5 flex gap-3">
                 {socials.map((s) => (
                   <a
                     key={s.label}
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-textMuted transition-colors hover:border-brand hover:text-brand"
+                    className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-500 transition-colors hover:border-gray-300 hover:text-gray-900"
                     aria-label={s.label}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
@@ -101,12 +57,54 @@ export default function Footer() {
                 ))}
               </div>
             </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Important Links</h3>
+              <ul className="mt-4 space-y-3">
+                {importantLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-500 transition-colors hover:text-gray-900"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Contact</h3>
+              <ul className="mt-4 space-y-3 text-sm text-gray-500">
+                <li className="flex items-start gap-2.5">
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-gray-400" />
+                  <span>15 Division Street, New York, NY 12032, United States of America</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Phone size={16} className="mt-0.5 shrink-0 text-gray-400" />
+                  <a href="tel:+0123456789" className="transition-colors hover:text-gray-900">
+                    +0 (123) 456789
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Mail size={16} className="mt-0.5 shrink-0 text-gray-400" />
+                  <a href="mailto:ryunosuke07@gmail.com" className="transition-colors hover:text-gray-900">
+                    ryunosuke07@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Printer size={16} className="mt-0.5 shrink-0 text-gray-400" />
+                  <span>+8 (123) 456 789</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </footer>
 
-      <div className="border-t border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 py-5 text-center text-sm text-textMuted sm:px-6 lg:px-8">
+      <div className="border-t border-gray-100 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 py-5 text-center text-sm text-gray-400 sm:px-6 lg:px-8">
           &copy; {new Date().getFullYear()} Zynex Global. All Rights Reserved.
         </div>
       </div>

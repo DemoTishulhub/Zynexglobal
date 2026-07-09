@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,9 +13,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zynexglobal.vercel.app"),
-  title: "Zynex Global — Premium Dehydrated Fruits, Vegetables & Food Ingredients",
+  title: {
+    default: "Zynex Global — Premium Dehydrated Fruits, Vegetables & Food Ingredients",
+    template: "%s | Zynex Global",
+  },
   description:
-    "Zynex Global is a leading B2B exporter of premium dehydrated fruits, vegetables, and food ingredients from India. Trusted by buyers in UAE, UK, Germany, Netherlands, and Saudi Arabia.",
+    "Zynex Global delivers premium dehydrated fruits, vegetables, and food ingredients to global markets with a commitment to quality, reliability, and international export standards.",
   openGraph: {
     title: "Zynex Global — Premium Dehydrated Food Exporter from India",
     description:
@@ -22,12 +27,6 @@ export const metadata: Metadata = {
     siteName: "Zynex Global",
     type: "website",
     locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Zynex Global — Premium Dehydrated Food Exporter",
-    description:
-      "Sourcing the world's finest dehydrated fruits, vegetables, and food ingredients.",
   },
   robots: {
     index: true,
@@ -42,7 +41,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-white text-gray-900 antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col bg-white text-gray-900 antialiased">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

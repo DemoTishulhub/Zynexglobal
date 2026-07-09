@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface ContactFormProps {
   prefillProduct?: string;
@@ -12,9 +12,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
     firstName: "",
     lastName: "",
     email: "",
-    subject: prefillProduct
-      ? `Product Inquiry: ${prefillProduct}`
-      : "",
+    subject: prefillProduct ? `Product Inquiry: ${prefillProduct}` : "",
     message: prefillProduct
       ? `I am interested in ${prefillProduct}. Please share more details about pricing, minimum order quantity, and availability.`
       : "",
@@ -91,11 +89,11 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
   }
 
   const inputClasses =
-    "w-full rounded-md border border-border bg-white px-3.5 py-2.5 text-sm text-text transition-colors placeholder:text-textMuted/60 focus:border-brand focus:outline-none";
+    "w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 transition-colors placeholder:text-gray-400 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-      <div className="absolute -m-[9999px] left-[-9999px]" aria-hidden="true">
+      <div className="absolute left-[-9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
           type="text"
@@ -110,7 +108,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="firstName" className="mb-1 block text-sm text-text">
+          <label htmlFor="firstName" className="mb-1.5 block text-sm font-medium text-gray-700">
             First Name
           </label>
           <input
@@ -125,7 +123,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
           />
         </div>
         <div>
-          <label htmlFor="lastName" className="mb-1 block text-sm text-text">
+          <label htmlFor="lastName" className="mb-1.5 block text-sm font-medium text-gray-700">
             Last Name
           </label>
           <input
@@ -142,7 +140,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm text-text">
+        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
           Email
         </label>
         <input
@@ -158,7 +156,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="subject" className="mb-1 block text-sm text-text">
+        <label htmlFor="subject" className="mb-1.5 block text-sm font-medium text-gray-700">
           Subject
         </label>
         <input
@@ -174,8 +172,8 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm text-text">
-          Message
+        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700">
+          Your Message
         </label>
         <textarea
           id="message"
@@ -190,7 +188,7 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       </div>
 
       {status === "error" && (
-        <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
           {errorMsg}
         </div>
       )}
@@ -198,18 +196,15 @@ export default function ContactForm({ prefillProduct }: ContactFormProps) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-light disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-dark disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? (
           <>
             <Loader2 size={16} className="animate-spin" />
-            Sending...
+            Submitting...
           </>
         ) : (
-          <>
-            <Send size={16} />
-            Send Message
-          </>
+          "Submit Form"
         )}
       </button>
     </form>
